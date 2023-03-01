@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Borrowing History</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/borrow_history.css' %}">
+</head>
+<body>
+	<h1>Borrowing History</h1>
+	<form>
+		<label for="user_id">UserID:</label>
+		<input type="text" id="user_id" name="user_id" required>
+		<button type="submit">Query</button>
+	</form>
+	<hr>
+	<h2>Query Result:</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>User name</th>
+				<th>Book Title</th>
+				<th>Borrow Date</th>
+				<th>Return Date</th>
+			</tr>
+		</thead>
+		<tbody id="result_table_body">
+			<!-- results will be added here -->
+		</tbody>
+	</table>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="{% static 'js/borrow_history.js' %}"></script>
+</body>
+</html>
