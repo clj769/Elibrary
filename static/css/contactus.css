@@ -1,0 +1,110 @@
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+
+header {
+  background-color: #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+ul {
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+
+.contact-info {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.contact-info h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-info ul {
+  margin: 0;
+}
+
+.contact-info li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.contact-info li:before {
+  content: "\2022";
+  color: #999;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Form */
+.contact-form {
+  margin-top: 40px;
+}
+
+.contact-form label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.contact-form textarea {
+  height: 200px;
+}
+
+.contact-form button {
+  display: block;
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
