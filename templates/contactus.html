@@ -17,10 +17,10 @@
 			<h2>Contact Information</h2>
 			<ul>
 				<li>Lujing Cai, 2790843C@student.gla.ac.uk</li>
-                <li>Zhixian Qi, </li>
-                <li>Zhiheng Zhang, </li>
-                <li>Yuxi Wang, </li>
-                <li>Bingcen Luo, </li>
+                <li>Zhixian Qi, 2815122Q@student.gla.ac.uk</li>
+                <li>Zhiheng Zhang, 2727457Z@student.gla.ac.uk</li>
+                <li>Yuxi Wang, 2772785W@student.gla.ac.uk</li>
+                <li>Bingcen Luo, 2709712L@student.gla.ac.uk</li>
 			</ul>
 		</div>
 		<form class="contact-form" action="{% url 'contact_us' %}" method="post">
@@ -37,8 +37,12 @@
 		</form>
 	</main>
 
+    <div id="success-message" class="hidden">
+        <p>Thank you for contacting us!</p>
+    </div>
+
     <!--JS-->
-    <script src="{% static 'css/contactus.js' %}"></script>
+    <script src="{% static 'js/contactus.js' %}"></script>
 
 </body>
 </html>

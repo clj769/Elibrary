@@ -9,7 +9,7 @@ form.addEventListener('submit', function(event) {
     // avoid to submit again
     submitButton.disabled = true;
 
-    // submit form and action 发送表单数据并接收响应
+    // submit form and response action
     fetch(event.target.action, {
         method: event.target.method,
         headers: {

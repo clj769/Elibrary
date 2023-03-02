@@ -50,6 +50,18 @@ button[type="submit"] {
 	cursor: pointer;
 }
 
+.button {
+  	background-color: #444;
+  	color: #fff;
+  	border: none;
+  	padding: 10px 20px;
+  	border-radius: 5px;
+  	font-size: 16px;
+  	text-decoration: none;
+  	margin-left: auto;
+	float: right;
+}
+
 hr {
 	margin: 30px 0;
 	border: none;

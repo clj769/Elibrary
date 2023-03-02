@@ -1,5 +1,3 @@
-from django.db.models import F
-from django.http import JsonResponse
 from django.shortcuts import render
 from app.models import User,Book,Record
 # Create your views here.

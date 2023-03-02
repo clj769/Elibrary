@@ -108,3 +108,8 @@ li {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* hide the success message */
+.hidden {
+  display: none;
+}
