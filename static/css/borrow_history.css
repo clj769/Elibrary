@@ -13,8 +13,17 @@ header {
   	text-align: center;
   	font-size: 24px;
   	font-weight: bold;
+
 }
 
+div{
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.contact{
+	height: 40px;
+}
 
 h1 {
 	margin-bottom: 20px;
@@ -50,6 +59,14 @@ button[type="submit"] {
 	cursor: pointer;
 }
 
+.user_icon {
+	width: 48px;
+	height: 48px;
+	background: #444444;
+	float: right;
+}
+
+/*contact us button*/
 .button {
   	background-color: #444;
   	color: #fff;
@@ -60,6 +77,8 @@ button[type="submit"] {
   	text-decoration: none;
   	margin-left: auto;
 	float: right;
+
+
 }
 
 hr {
@@ -87,4 +106,35 @@ th {
 	background-color: #008cba;
 	color: #fff;
 	font-weight: bold;
+}
+
+.page_top{
+	height: 50px;
+	text-align: center;
+}
+
+/*search input bar*/
+#search {
+	width: 600px;
+	height: 30px;
+	background: url("/static/images/search.jpg") no-repeat;
+	text-indent: 40px;
+	color: #c0c0c0;
+	border-color: #c0c0c0;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 21px 21px 21px 21px;
+	font-weight: 400;
+	font-size: 16px;
+
+}
+
+.copyright{
+	width: 171px;
+	height: 34px;
+	color: #444444;
+	font-weight: bold;
+	font-size: 22px;
+	line-height: 1.28;
+	float: left;
 }

@@ -13,7 +13,17 @@
 		E-library
     </header>
 
-    <a href="{% url 'contact_us' %}" class="button">Contact Us</a>
+    <div class="page_top">
+        <label class="copyright">@E-Library</label>
+        <input type="text" id="search" name="search" placeholder="Search book...">
+        <a href="">
+            <img src="{% static 'images/user.jpg' %}" alt="Picture of User" class="user_icon"/>
+        </a>
+    </div>
+
+    <div class="contact">
+        <a href="{% url 'contact_us' %}" class="button">Contact Us</a>
+    </div>
 
     <main>
 	<h1>Borrowing History</h1>
