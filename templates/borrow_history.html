@@ -13,52 +13,65 @@
 		E-library
     </header>
 
+    <!--all the pages top are similar-->
     <div class="page_top">
         <label class="copyright">@E-Library</label>
-        <input type="text" id="search" name="search" placeholder="Search book...">
+
+        <!--redirect to the user's homepage-->
         <a href="">
-            <img src="{% static 'images/user.jpg' %}" alt="Picture of User" class="user_icon"/>
+                <img src="{% static 'images/user.jpg' %}" alt="Picture of User" class="user_icon"/>
         </a>
+
+        <!--contact us button, redirect to the contact us page -->
+        <a href="{% url 'contact_us' %}" class="button">Contact Us</a>
+
+        <!--search book, redirect to the search result page -->
+        <form id="search-form" action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <input type="text" id="search" name="search" placeholder="Search book...">
+            <button type="submit">Search</button>
+        </form>
     </div>
 
-    <div class="contact">
-        <a href="{% url 'contact_us' %}" class="button">Contact Us</a>
-    </div>
 
     <main>
-	<h1>Borrowing History</h1>
+	    <h1>Borrowing History</h1>
 
-	<form>
-		<label for="user_id">UserID:</label>
-		<input type="text" id="user_id" name="user_id" required>
-		<button type="submit">Query</button>
-	</form>
-    <hr>
-    <h2>Query Result:</h2>
-    <table>
-		<thead>
-			<tr>
-				<th>Username</th>
-                <th>Book ID</th>
-				<th>Book Title</th>
-				<th>Borrow Date</th>
-				<th>Return Date</th>
-			</tr>
-		</thead>
-		<tbody id="result_table_body">
-			<!-- results will be added here -->
-            {% for record in records %}
-            <tr>
-                <td>{{ record.username }}</td>
-                <td>{{ record.book_id }}</td>
-                <td>{{ record.book_title }}</td>
-                <td>{{ record.borrow_date}}</td>
-                <td>{{ record.return_date }}</td>
-            </tr>
-            {% endfor %}
-		</tbody>
-	</table>
+	    <form>
+		    <label for="user_id">UserID:</label>
+		    <input type="text" id="user_id" name="user_id" required>
+		    <button type="submit">Query</button>
+	    </form>
+
+        <hr>
+
+        <h2>Query Result:</h2>
+        <table>
+		    <thead>
+			    <tr>
+				    <th>Username</th>
+                    <th>Book ID</th>
+				    <th>Book Title</th>
+				    <th>Borrow Date</th>
+				    <th>Return Date</th>
+			    </tr>
+		    </thead>
+
+            <tbody id="result_table_body">
+			    <!-- results will be added here -->
+                {% for record in records %}
+                    <tr>
+                    <td>{{ record.username }}</td>
+                    <td>{{ record.book_id }}</td>
+                    <td>{{ record.book_title }}</td>
+                    <td>{{ record.borrow_date}}</td>
+                    <td>{{ record.return_date }}</td>
+                    </tr>
+                {% endfor %}
+		    </tbody>
+	    </table>
     </main>
+
 
 </body>
 </html>

@@ -23,4 +23,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('borrow_history/', views.borrow_history, name='borrow_history'),
     path('contactus/', views.contact_us, name='contact_us'),
+    path('search/',views.search, name='search')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
