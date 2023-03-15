@@ -1,46 +1,21 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Borrowing History</title>
+{% block title %}Borrowing History{% endblock %}
+
+{% block css %}
+    {{ block.super }}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/borrow_history.css' %}">
-</head>
+{% endblock %}
 
-
-<body>
-    <header>
-		E-library
-    </header>
-
-    <!--all the pages top are similar-->
-    <div class="page_top">
-        <label class="copyright">@E-Library</label>
-
-        <!--redirect to the user's homepage-->
-        <a href="">
-                <img src="{% static 'images/user.jpg' %}" alt="Picture of User" class="user_icon"/>
-        </a>
-
-        <!--contact us button, redirect to the contact us page -->
-        <a href="{% url 'contact_us' %}" class="button">Contact Us</a>
-
-        <!--search book, redirect to the search result page -->
-        <form id="search-form" action="{% url 'search' %}" method="post">
-            {% csrf_token %}
-            <input type="text" id="search" name="search" placeholder="Search book...">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-
-
+{% block content %}
     <main>
 	    <h1>Borrowing History</h1>
 
 	    <form>
 		    <label for="user_id">UserID:</label>
 		    <input type="text" id="user_id" name="user_id" required>
-		    <button type="submit">Query</button>
+		    <button type="submit" id="query-button">Query</button>
 	    </form>
 
         <hr>
@@ -58,8 +33,7 @@
 		    </thead>
 
             <tbody id="result_table_body">
-			    <!-- results will be added here -->
-                {% for record in records %}
+			    {% for record in records %}
                     <tr>
                     <td>{{ record.username }}</td>
                     <td>{{ record.book_id }}</td>
@@ -71,7 +45,4 @@
 		    </tbody>
 	    </table>
     </main>
-
-
-</body>
-</html>
+{% endblock %}

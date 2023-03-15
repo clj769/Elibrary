@@ -1,138 +1,58 @@
-
-body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  	background-color: #ddd;
-  	padding: 10px;
-  	text-align: center;
-  	font-size: 24px;
-  	font-weight: bold;
-
-}
-
 div{
-	margin-bottom: 10px;
-	margin-top: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 h1 {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 form {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 label {
-	font-weight: bold;
-	display: inline-block;
-	width: 100px;
-	margin-right: 10px;
-	text-align: right;
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
 }
 
-input[type="text"] {
-	padding: 5px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	font-size: 16px;
-	margin-right: 10px;
-}
-
-/*submit button*/
-button[type="submit"] {
-	padding: 5px 10px;
-	border-radius: 5px;
-	border: none;
-	background-color: #008cba;
-	color: #fff;
-	font-size: 16px;
-	cursor: pointer;
+/*user_id input bar*/
+#user_id {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 
 
 hr {
-	margin: 30px 0;
-	border: none;
-	border-bottom: 1px solid #ccc;
+    margin: 30px 0;
+    border: none;
+    border-bottom: 1px solid #ccc;
 }
 
 h2 {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 table {
-	border-collapse: collapse;
-	width: 100%;
+    border-collapse: collapse;
+    width: 100%;
 }
 
 th, td {
-	padding: 10px;
-	border: 1px solid #ccc;
-	text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
 }
 
 th {
-	background-color: #008cba;
-	color: #fff;
-	font-weight: bold;
-}
-
-.page_top{
-	height: 50px;
-	text-align: center;
-}
-
-/*search input bar*/
-#search {
-	width: 500px;
-	height: 30px;
-	background: url("/static/images/search.jpg") no-repeat;
-	text-indent: 40px;
-	color: #c0c0c0;
-	border-color: #c0c0c0;
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 21px 21px 21px 21px;
-	font-weight: 400;
-	font-size: 16px;
-
-}
-
-.copyright{
-	width: 171px;
-	height: 34px;
-	color: #444444;
-	font-weight: bold;
-	font-size: 22px;
-	line-height: 1.28;
-	float: left;
-}
-
-.user_icon {
-	width: 48px;
-	height: 48px;
-	background: #444444;
-	float: right;
-}
-
-/*contact us button*/
-.button {
-  	background-color: #444;
-  	color: #fff;
-  	border: none;
-  	padding: 10px 20px;
-  	border-radius: 5px;
-  	font-size: 16px;
-  	text-decoration: none;
-  	margin-left: auto;
-	float: right;
-
+    background-color: #008cba;
+    color: #fff;
+    font-weight: bold;
 }
