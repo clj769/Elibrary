@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Test</title>
+</head>
+<body>
+{#    {% if user.is_authenticated %}#}
+{#        Welcome! User:  {{ user.username }}.#}
+{#    {% else %}#}
+{#        hey there partner!#}
+{#    {% endif %}#}
+<div>
+    <ul>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'auth_logout' %}?next={% url 'app:index' %}">Logout</a></li>
+            <li><a href="{% url 'auth_password_change' %}">Change your Password</a></li>
+        {% else %}
+{#            <button id="login" onclick="window.location.href='{% url 'auth_login' %}'">Login</button>#}
+{#            <button id="register" onclick="window.location.href='{% url 'registration_register' %}'">Register</button>#}
+            <li><a href="{% url 'registration_register' %}">Sign Up</a></li>
+            <li><a href="{% url 'auth_login' %}">Login</a></li>
+        {% endif %}
+{#        <li><a href="{% url 'app:index' %}">Index</a></li>#}
+    </ul>
+</div>
+<br/>
+
+
+</body>
+</html>
