@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-library</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">E-Library</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Most popular <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Latest</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">login</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="head">
+    <div class="container">
+        <ul>
+            {% for category in categories %}
+                <li class="col-md-1" style="display:block;margin-top: 15px"><a
+                        href="{% url 'elib:show_category' category.slug %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+            <div class="col-md-5">
+                <a>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <p><a class="btn btn-primary btn-lg" href="{% url 'elib:contact_us' %}" role="button">Contact Us</a></p>
+            </div>
+    </div>
+</div>
+
+<div class="page-header">
+    <div class="container banner">
+        <img src="static/imgs/banner.jpg" alt="">
+        <h1>Rent Your Book From Here!</h1>
+    </div>
+</div>
+
+<div class="new page-header">
+    <div class="container">
+        <h3>New Books!</h3>
+        {% if pages %}
+            <ul>
+                {% for page in pages %}
+                    <li style="display: block">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <a href="{{ page.url }}">
+                                        <img src="https://img2.doubanio.com/view/subject/s/public/s34456762.jpg" alt="">
+                                    </a>
+                                    <div class="caption">
+                                        <a href="{{ page.url }}">{{ page.title }}</a>
+                                        <p>
+                                            上野千鹤子2023全新作品！<br>
+                                            写给所有女性的清醒之书。<br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no pages present.</strong>
+        {% endif %}
+
+
+    </div>
+</div>
+
+<div class="category">
+    <div class="container">
+        <h3>Category Highlights!</h3>
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <a href="https://book.douban.com/subject/36211756/?icn=index-latestbook-subject">
+                        <img src="https://img2.doubanio.com/view/subject/s/public/s34456762.jpg" alt="">
+                    </a>
+                    <div class="caption">
+                        <h3><a href="app/category/literature/">Literature</a>
+                        </h3>
+                        <p>
+                            上野千鹤子2023全新作品！
+                            写给所有女性的清醒之书。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="..." alt="...">
+                    <div class="caption">
+                        <h3>Fiction</h3>
+                        <p>...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="..." alt="...">
+                    <div class="caption">
+                        <h3>Science</h3>
+                        <p>...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="..." alt="...">
+                    <div class="caption">
+                        <h3>Art</h3>
+                        <p>...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

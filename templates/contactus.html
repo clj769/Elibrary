@@ -23,7 +23,7 @@
                 <li>Bingcen Luo, 2709712L@student.gla.ac.uk</li>
 			</ul>
 		</div>
-		<form class="contact-form" action="{% url 'contact_us' %}" method="post">
+		<form class="contact-form" action="{% url 'elib:contact_us' %}" method="post">
 			{% csrf_token %}
 			<label for="name">Name:</label>
 			<input type="text" id="name" name="name" required>

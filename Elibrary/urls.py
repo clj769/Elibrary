@@ -18,10 +18,11 @@ from django.urls import path
 from app import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import include
 
 urlpatterns = [
+    path('', views.IndexView.as_view(), name='index'),
+    path('app/', include('app.urls')),
     path("admin/", admin.site.urls),
-    path('borrow_history/', views.borrow_history, name='borrow_history'),
-    path('contactus/', views.contact_us, name='contact_us'),
-    path('search/',views.search, name='search')
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

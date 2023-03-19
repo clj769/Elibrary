@@ -1,0 +1,76 @@
+.row {
+    float: left;
+}
+
+.page-header {
+    margin: 0 0;
+}
+
+.head a {
+    text-decoration: none;
+}
+
+.head .col-md-1 {
+    float: left;
+    height: 80px;
+    display: block;
+    line-height: 80px;
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.head .col-md-5 {
+    float: left;
+    display: block;
+    line-height: 80px;
+    text-align: center;
+    font-size: 18px;
+    marker: none;
+}
+
+.head .col-md-3 {
+    float: right;
+    display: block;
+    line-height: 80px;
+    text-align: right;
+    marker: none;
+}
+
+.banner img {
+    height: 230px;
+    width: 100%;
+}
+
+.new a {
+    text-decoration: none;
+}
+
+.new .thumbnail {
+    width: 300px;
+    height: 500px;
+}
+
+.new .thumbnail img {
+    width: 225px;
+    height: 300px;
+}
+
+.new {
+    font-size: 20px;
+}
+
+.category a {
+    text-decoration: none;
+}
+
+.category .thumbnail {
+    width: 285px;
+    height: 400px;
+}
+
+.category .thumbnail img {
+    width: 200px;
+    height: 275px;
+}
+

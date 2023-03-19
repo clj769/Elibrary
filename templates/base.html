@@ -25,9 +25,9 @@
                 <img src="{% static 'images/user.jpg' %}" alt="Picture of User" id="user-icon"/>
         </a>
 
-        <a href="{% url 'contact_us' %}" id="contact-button">Contact Us</a>
+        <a href="{% url 'elib:contact_us' %}" id="contact-button">Contact Us</a>
 
-        <form id="search-form" action="{% url 'search' %}" method="post" autocomplete="off">
+        <form id="search-form" action="{% url 'elib:search' %}" method="post" autocomplete="off">
             {% csrf_token %}
             <input type="text" id="search" name="search" placeholder="Search book...">
             <button type="submit" id="search-button">Search</button>
