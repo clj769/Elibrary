@@ -11,12 +11,12 @@
 
 .heading-text {
     width: 426px;
-	height: 36px;
-	color: #3b4754;
+    height: 36px;
+    color: #3b4754;
     font-family: "Open Sans", serif;
-	font-weight: bold;
-	font-size: 36px;
-	line-height: 1.1;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 1.1;
     text-align: center;
     margin: 20px auto 40px;
 }
@@ -55,30 +55,31 @@
 .form-control-1 {
     width: 439px;
     height: 48px;
-    padding: 0px 10px 0px 20px;
+    padding: 0 10px 0 20px;
     background: #ffffff;
     color: #444444;
     border-color: #d6d6d6;
     border-width: 2px;
     border-style: solid;
     border-radius: 4px 4px 4px 4px;
-    font-family: "Source Sans 3";
+    font-family: "Source Sans 3", serif;
     font-weight: 500;
     font-size: 20px;
     text-align: left;
     margin-bottom: 20px;
 }
+
 .form-control-2 {
     width: 439px;
     height: 48px;
-    padding: 0px 10px 0px 20px;
+    padding: 0 10px 0 20px;
     background: #ffffff;
     color: #444444;
     border-color: #d6d6d6;
     border-width: 2px;
     border-style: solid;
     border-radius: 4px 4px 4px 4px;
-    font-family: "Source Sans 3";
+    font-family: "Source Sans 3", serif;
     font-weight: 500;
     font-size: 20px;
     text-align: left;
