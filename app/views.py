@@ -1,41 +1,128 @@
-from django.db.models import Q
-from django.shortcuts import render
-from app.models import User,Book,Record
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from app.models import Book
+
 # Create your views here.
-def borrow_history(request):
+
+
+# def book_view(request):
+#     if request.method == 'GET':
+#         book_title = request.GET.get('book_title')
+#         if book_title:
+#             books = Book.objects.filter(title=book_title)
+#             data = {
+#                 'books': [
+#                     {
+#                         'book_id': book.bookid,
+#                         'book_title': book.title,
+#                         'book_author': book.author,
+#                         'book_num': book.booknum,
+#                         'book_description': book.description,
+#                     } for book in books
+#                 ]
+#             }
+#         else:
+#             data = {'books': []}
+#
+#
+#
+#     # render返回html，按app注册顺序，从templates目录下寻找
+#     # 如果settings的TEMPLAES中有'DIRS': [os.path.join(BASE_DIR, 'templates')]，则从根目录开始寻找
+#     return render(request, 'book_details.html',  context=data)
+
+# def book_search(request):
+#     if request.method == 'POST':
+#         book_title = request.POST.get('book_title')
+#         if book_title:
+#             book = Book.objects.filter(title__icontains=book_title)
+#             data = {
+#                 'books': [
+#                     {
+#                         'book_id': book.bookid,
+#                         'book_title': book.title,
+#                         'book_author': book.author,
+#                         'book_num': book.booknum,
+#                         'book_description': book.description,
+#                     } for app in book
+#                 ]
+#             }
+#             return render(request, 'book_details.html', context=data)
+#     return render(request, 'book_details.html')
+#
+
+
+from django.shortcuts import render, get_object_or_404
+from .models import Book
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+from .forms import BorrowBookForm
+
+
+# def book_details(request):
+#    book_dict = {}
+#    value = request.GET.get('id')
+#    if value:
+#        book_dict["book_id"] = value
+#
+#     book = Book.objects.filter(book_dict)
+#
+#     return render(request, 'book_details.html', {"book": book})
+#
+
+def book_details(request):
     if request.method == 'GET':
-        user_id = request.GET.get('user_id') #the tag's 'name' in html
-        records = Record.objects.filter(user=user_id)
-        data = {
-            'records': [
-                {
-                    'username': record.user.username,
-                    'book_id': record.book.bookid,
-                    'book_title': record.book.title,
-                    'borrow_date': record.borrow_date.strftime('%Y-%m-%d %H:%M:%S'),
-                    'return_date': record.return_date.strftime('%Y-%m-%d %H:%M:%S') if record.return_date else ''
-                } for record in records
-            ]
-        }
-        #print(data)
-        return render(request, 'borrow_history.html', context=data)
-
-def search(request):
-    #the html file's tag name
-    if request.method == 'POST':
-        query = request.POST.get('search')
-        #print(query)
-        if query:
-            #search in the db with title or author
-            books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
-            #print(books)
+        book_title = request.GET.get('book_title')
+        if book_title:
+            books = Book.objects.filter(title__icontains=book_title)
+            data = {
+                'books': [
+                    {
+                        'book_id': book.bookid,
+                        'book_title': book.title,
+                        'book_author': book.author,
+                        'book_num': book.booknum,
+                        'book_description': book.description,
+                    } for book in books
+                ]
+            }
         else:
-            #print('no book')
-            books = Book.objects.none()  # empty QuerySet
+            data = {'books': []}
 
-    return render(request, 'search.html', {'books': books, 'query': query})
-
+        return render(request, 'book_details.html', context=data)
 
 
-def contact_us(request):
-    return render(request, 'contactus.html')
+def borrow_book(request):
+    if request.method == 'POST':
+        book_id = request.POST.get('book_id')
+        book = Book.objects.get(bookid=book_id)
+        if book.booknum == 0:
+            message = "This book is currently out of stock."
+            return JsonResponse({'success': False, 'message': message})
+        else:
+            book.booknum -= 1
+            book.save()
+            message = "Book borrowed successfully!"
+            return JsonResponse({'success': True, 'message': message})
+    return JsonResponse({'success': False, 'message': 'Invalid request.'})
+
+
+def index(request):
+    if request.method == 'GET':
+        book_title = request.GET.get('book_title')
+        if book_title:
+            books = Book.objects.filter(title__contains=book_title)
+            data = {
+                'books': [
+                    {
+                        'book_id': book.bookid,
+                        'book_title': book.title,
+                        'book_author': book.author,
+                        'book_num': book.booknum,
+                        'book_description': book.description,
+                    } for book in books
+                ]
+            }
+        else:
+            data = {'books': []}
+
+        return render(request, 'index.html', context=data)
