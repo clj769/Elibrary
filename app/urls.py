@@ -9,6 +9,7 @@ urlpatterns = [
     path('borrow_history/', views.borrow_history, name='borrow_history'),
     path('contactus/', views.contact_us, name='contact_us'),
     path('search/', views.search, name='search'),
+    path('book_search/', views.book_search, name='book_search'),
     path('goto/', views.GotoView.as_view(), name='goto'),
 
 ]

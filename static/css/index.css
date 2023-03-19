@@ -38,7 +38,7 @@
 }
 
 .banner img {
-    height: 230px;
+    height: 300px;
     width: 100%;
 }
 
@@ -47,8 +47,9 @@
 }
 
 .new .thumbnail {
-    width: 300px;
+    width: 350px;
     height: 500px;
+    margin-right: 10px;
 }
 
 .new .thumbnail img {

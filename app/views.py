@@ -106,3 +106,19 @@ class GotoView(View):
         selected_page.save()
 
         return redirect(selected_page.url)
+
+
+def book_search(request):
+    # the html file's tag name
+    if request.method == 'POST':
+        book_query = request.POST.get('search')
+        # print(query)
+        if book_query:
+            # search in the db with title or author
+            pages = Page.objects.filter(Q(title__icontains=book_query))
+            # print(books)
+        else:
+            # print('no book')
+            pages = Page.objects.none()  # empty QuerySet
+
+    return render(request, 'book_search.html', {'pages': pages, 'book_query': book_query})
