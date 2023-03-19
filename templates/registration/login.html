@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <link rel="stylesheet" href="{% static '/css/registration.css' %}">
 </head>
 <body>
 <div class="container">
@@ -13,18 +13,17 @@
     <form class="container" role="form" method="post" action=".">
         {% csrf_token %}
         <label for="inputUsername" class="input-label">Username</label>
-        <input type="text" name="username" id="id_username" class="form-control"
+        <input type="text" name="username" id="id_username" class="form-control-1"
                required autofocus>
         <label for="inputPassword" class="input-label">Password</label>
-        <input type="password" name="password" id="id_password" class="form-control"
+        <input type="password" name="password" id="id_password" class="form-control-1"
                required>
-        <button class="button" type="submit"
+        <button class="button-login" type="submit"
                 value="Submit">Log in
         </button>
         <p class="register-text">
             Not registered?<a href="{% url 'registration_register' %}">Register here!</a>
         </p>
-
     </form>
 
 </div>

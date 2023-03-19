@@ -1,10 +1,33 @@
-{% block title_block %}
-    Register
-{% endblock %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <link rel="stylesheet" href="{% static '/css/registration.css' %}">
+</head>
 {% block body_block %}
-    <h1>Register Here</h1>
-    <form method="post" action=".">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Register"/></form>
+    <div class="container">
+        <h1 class="heading-text">Register</h1>
+        <p class="paragraph-text">Not a member? Join now!</p>
+        <form class="container" role="form" method="post" action=".">
+            {% csrf_token %}
+            <label class="input-label" for="id_username">Username</label>
+            <input class="form-control-2" id="id_username" maxlength="30"
+                   name="username" type="text"/>
+            <p class="paragraph-text-register">Required. 30 characters or fewer.
+                Letters, digits and @/./+/-/_ only. </p>
+            <label class="input-label" for="id_email">E-mail</label><br>
+            <input class="form-control-1" id="id_email" name="email"
+                   type="email"/>
+            <label class="input-label" for="id_password1"> Password</label>
+            <input class="form-control-1" id="id_password1" name="password1"
+                   type="password"/>
+            <label class="input-label" for="id_password2">
+                Password confirmation</label>
+            <input class="form-control-2" id="id_password2" name="password2"
+                   type="password"/>
+            <p class="paragraph-text-register">
+                Enter the same password as before, for verification. </p>
+            <button type="submit" class="button-register">Submit</button>
+        </form>
+    </div>
 {% endblock %}
