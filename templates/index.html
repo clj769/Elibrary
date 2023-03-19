@@ -1,14 +1,16 @@
+{% extends 'base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>E-library</title>
+
+{% block title %}E-library{% endblock %}
+
+{% block css %}
+    {{ block.super }}
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-</head>
-<body>
+{% endblock %}
 
+{% block content %}
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -20,7 +22,6 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">E-Library</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -28,9 +29,6 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Most popular <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Latest</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">login</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -44,18 +42,7 @@
                         href="{% url 'elib:show_category' category.slug %}">{{ category.name }}</a></li>
             {% endfor %}
         </ul>
-        <div class="col-md-5">
-            <a>
-                <form id="search-form" action="{% url 'elib:book_search' %}" method="post" autocomplete="off">
-                    {% csrf_token %}
-                    <input type="text" id="search" name="search" placeholder="Search book...">
-                    <button type="submit" id="search-button">Search</button>
-                </form>
-            </a>
-        </div>
-        <div class="col-md-2">
-            <p><a class="btn btn-primary btn-lg" href="{% url 'elib:contact_us' %}" role="button">Contact Us</a></p>
-        </div>
+
     </div>
 </div>
 
@@ -156,7 +143,6 @@
         </div>
     </div>
 </div>
+{% endblock %}
 
 
-</body>
-</html>

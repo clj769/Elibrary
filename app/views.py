@@ -36,7 +36,7 @@ def borrow_history(request):
         # print(data)
         return render(request, 'borrow_history.html', context=data)
 
-
+"""
 def search(request):
     # the html file's tag name
     if request.method == 'POST':
@@ -51,7 +51,7 @@ def search(request):
             books = Book.objects.none()  # empty QuerySet
 
     return render(request, 'search.html', {'books': books, 'query': query})
-
+"""
 
 def contact_us(request):
     return render(request, 'contactus.html')

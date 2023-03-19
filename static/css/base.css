@@ -37,7 +37,7 @@ div{
 /*search input bar*/
 #search {
     width: 500px;
-    height: 35px;
+    height: 40px;
     background: url("/static/images/search.jpg") no-repeat;
     text-indent: 40px;
     color: #c0c0c0;
