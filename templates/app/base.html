@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
 	<title>
         {% block title %}{% endblock %}
     </title>
 
-	{% block css %}
+	{% block link %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-        <!-- other page's css link-->
+        <!-- other links-->
 	{% endblock %}
 </head>
 
@@ -21,9 +22,17 @@
     <div class="page_top">
         <label class="copyright">@E-Library</label>
 
-        <a href="{% url 'elib:login' %}">
+        {% if user.is_authenticated %}
+            <!--user is login, redirect to the account details-->
+            <a href="">
                 <img src="{% static 'images/user.jpg' %}" alt="Picture of User" id="user-icon"/>
-        </a>
+            </a>
+        {% else %}
+            <!--user not login, redirect to login page-->
+            <a href="{% url 'elib:login' %}">
+                <img src="{% static 'images/user.jpg' %}" alt="Picture of User" id="user-icon"/>
+            </a>
+        {% endif %}
 
         <a href="{% url 'elib:contact_us' %}" id="contact-button">Contact Us</a>
 

@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -189,3 +189,39 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect(reverse('app:login'))
+
+def book_details(request):
+    if request.method == 'GET':
+        book_title = request.GET.get('book_title')
+        if book_title:
+            books = Book.objects.filter(title__icontains=book_title)
+            data = {
+                'books': [
+                    {
+                        'book_id': book.bookid,
+                        'book_title': book.title,
+                        'book_author': book.author,
+                        'book_num': book.booknum,
+                        'book_description': book.description,
+                    } for book in books
+                ]
+            }
+        else:
+            data = {'books': []}
+
+        return render(request, 'app/book_details.html', context=data)
+
+
+def borrow_book(request):
+    if request.method == 'POST':
+        book_id = request.POST.get('book_id')
+        book = Book.objects.get(bookid=book_id)
+        if book.booknum == 0:
+            message = "This book is currently out of stock."
+            return JsonResponse({'success': False, 'message': message})
+        else:
+            book.booknum -= 1
+            book.save()
+            message = "Book borrowed successfully!"
+            return JsonResponse({'success': True, 'message': message})
+    return JsonResponse({'success': False, 'message': 'Invalid request.'})

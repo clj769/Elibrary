@@ -1,0 +1,230 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+{% block title %}Book Details Page{% endblock %}
+
+{% block link %}
+    {{ block.super }}
+	<link rel="stylesheet" href="{% static 'css/book_detail.css' %} ">
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="{% static 'js/bookDetails.js' %}"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="header">
+
+
+    <div class="container3">
+
+
+        <div class="top-right">
+
+            <!-- Heart
+            <a class=" right-icon" href="url">
+                <i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+            </a> -->
+        </div>
+    </div>
+
+    {% if request.method == 'GET'%}
+    {% for book in books %}
+    <div class="container2">
+        <div class="link-bar1-style">
+            <a class="link-bar-1" href="url"> Literature </a>
+            <a class="link-bar-1" href="url"> Fiction </a>
+            <a class="link-bar-1" href="url"> History </a>
+            <a class="link-bar-1" href="url"> Art </a>
+            <a class="link-bar-1" href="url"> Business</a>
+            <a class="link-bar-1" href="url"> Comics </a>
+            <a class="link-bar-1" href="url"> Science </a>
+            <a class="link-bar-1" href="url"> Social </a>
+        </div>
+
+        <div class="button-contact-style">
+            <button class="button-contact">Contact Us</button>
+
+        </div>
+    </div>
+
+</div>
+<hr>
+
+<div class="main">
+
+    <!--book title author rate description-->
+    <div class="bookinfo-top">
+
+        <!--bookcover img -->
+        <div class="image-bookcover">
+            <img src="/static/images/luffy.png" alt="book cover">
+        </div>
+        <!-- booktitle -->
+        <div>
+
+            <p1 class="bookinfo-title">{{ book.book_title }}</p1>
+            <!-- author -->
+            <p class="bookinfo-author"> {{ book.book_author }}</p>
+
+            <div class="bookinfo-rate">
+
+                <!-- Rate -->
+                <p class="bookinfo-star"> Rate It</p>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5"/>
+                    <label for="star5" title="5星"></label>
+                    <input type="radio" id="star4" name="rating" value="4"/>
+                    <label for="star4" title="4星"></label>
+                    <input type="radio" id="star3" name="rating" value="3"/>
+                    <label for="star3" title="3星"></label>
+                    <input type="radio" id="star2" name="rating" value="2"/>
+                    <label for="star2" title="2星"></label>
+                    <input type="radio" id="star1" name="rating" value="1"/>
+                    <label for="star1" title="1星"></label>
+                </div>
+
+                <!-- Available Dot -->
+                {% if book.book_num > 0 %}
+                <div class="book-status">
+                    <div class="dot available"></div>
+                    <div class="text">Available</div>
+                </div>
+                {% else %}
+                <div class="book-status">
+                    <div class="dot unavailable"></div>
+                    <div class="text">Unavailable</div>
+                </div>
+                {% endif %}
+
+                <!-- heart -->
+                <div class="heart">
+                    <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+                </div>
+
+
+                <!-- Borrow Now btn & Review -->
+                <div>
+                    <form id="borrow-form" method="POST" action="{% url 'borrow_book' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="book_id" value="{{ book.book_id }}">
+                        <button class="borrowbutton" id="borrow-now-btn" data-book-id="{{ book.book_id }}">Borrow Now
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div class=" write-review ">
+                    <a href="review.html" class="review-link" href="url">
+                        <i class="fa fa-comment-o fa-3x"></i>
+                        Write a Review
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <div id="container">
+
+        <!--bottom introduction -->
+        <!--    <div class="bookintro">-->
+        <div class="text-container">
+            <p class="text">{{ book.book_description }}</p>
+            <button class="read-more">Read More</button>
+        </div>
+
+
+        <!--    </div>-->
+
+        <hr>
+
+        <!--    authordetails reviews..-->
+        <!--    <div class="author-detail">-->
+        <!--        <p class="text-author-details">Author Details</p>-->
+
+        <!--    </div>-->
+        <div class="author-info">
+            <div class="author-header">
+                <h3>Author Details</h3>
+                <span class="toggle-arrow">&#x25B6;</span>
+            </div>
+            <div class="author-details">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies ligula in ex consequat,
+                    vel
+                    interdum nibh pulvinar. Nulla eget maximus tortor. Donec faucibus odio in sapien convallis, id
+                    interdum
+                    ipsum lobortis. Sed blandit eget mi ut tempus. Sed porta aliquet dui, in efficitur purus vehicula
+                    sit
+                    amet. Fusce et nibh sed lectus pellentesque varius. Pellentesque pharetra auctor ex at venenatis.
+                    Sed
+                    non metus non sem tincidunt lobortis sed quis tellus.</p>
+            </div>
+        </div>
+
+
+        <hr>
+        <div class="reviews-info">
+            <div class="reviews-header">
+                <h3>Reviews</h3>
+                <span class="toggle-arrow">&#x25B6;</span>
+            </div>
+            <div class="reviews-details">
+                <!--                *****************************-->
+                <div class="comment">
+                    <div class="comment-header">
+                        <span class="comment-author">John Doe</span>
+                        <span class="comment-date">2023-03-20</span>
+                    </div>
+                    <div class="comment-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl sit amet urna interdum
+                        ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Donec eu nisl sit amet urna interdum
+                        ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Donec eu nisl sit amet urna interdum
+                        ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Donec eu nisl sit amet urna interdum
+                        ullamcorper. Sed non lectus vel dolor eleifend tempus.
+                    </div>
+                    <div class="comment-footer">
+                        <a href="#" class="comment-toggle">Show More</a>
+                    </div>
+                </div>
+
+                <!--                *****************************-->
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    {% endfor %}
+    {% endif %}
+
+    <hr>
+    <div class="related"> Related Books</div>
+    <div class="related-images">
+        <div class="images">
+            <img src="/static/images/luffy.png" alt="Image 1">
+            <img src="/static/images/luffy.png" alt="Image 2">
+            <img src="/static/images/luffy.png" alt="Image 3">
+            <img src="/static/images/luffy.png" alt="Image 4">
+            <img src="/static/images/luffy.png" alt="Image 5">
+        </div>
+        <button class="arrow"></button>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+

@@ -1,5 +1,5 @@
 from django import forms
-from app.models import Page, Category
+from app.models import Page, Category, Book
 from django.contrib.auth.models import User
 from app.models import UserProfile
 
@@ -50,3 +50,13 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('website', 'picture',)
+
+class BorrowBookForm(forms.Form):
+    book_id = forms.IntegerField()
+
+    def borrow_book(self):
+        book_id = self.cleaned_data['book_id']
+        book = Book.objects.get(pk=book_id)
+        book.book_num -= 1
+        book.save()
+

@@ -1,0 +1,526 @@
+body {
+  /*max-width: 1366px;*/
+  margin: 0 auto;
+}
+.header{
+    /*width: 1366px;*/
+	height: 169px;
+}
+.main {
+  /*max-width: 1066px;*/
+  margin: 0 auto;
+}
+.container3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+.container2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+
+}
+
+.rectangle-top {
+	/*width: 1366px;*/
+	height: 38px;
+	padding: 8px 8px 8px 8px;
+	background: #444444;
+	color: #ffffff;
+	font-family: "Source Sans 3";
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 1.3;
+	text-align: center;
+
+}
+
+.paragraph-1-copy-8 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #444444;
+    font-family: "Source Sans 3";
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.28;
+    margin-top: 20px;
+    margin-left: 44px;
+}
+.at-sign-icon-1 {
+	width: 32px;
+	height: 32px;
+	background: #444444;
+}
+
+.top-right{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 18px;
+    margin-right: 40px;
+
+}
+
+.right-icon{
+    width: 30px;
+	height: 23px;
+	color: #444444;
+	margin-left: 9px;
+}
+.login-register{
+	height: 23px;
+	font-family: "Source Sans 3";
+	font-weight: 600;
+	font-size: 16px;
+	margin-left: 9px;
+	color: #444444;
+	text-decoration: none;
+}
+
+.button-contact-style{
+    display: flex;
+    justify-content: right;
+
+    margin-top: 15px;
+    margin-right: 40px;
+}
+.button-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 138px;
+	height: 35px;
+	padding: 0px 10px 0px 10px;
+	background: #444444;
+	color: #ffffff;
+	border-color: #444444;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 4px 4px 4px 4px;
+	font-family: "Source Sans 3";
+	font-weight: bold;
+	font-size: 14px;
+
+}
+.link-bar1-style{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 18px;
+    margin-left: 110px;
+}
+.link-bar-1 {
+	color: #444444;
+	font-family: "Source Sans 3";
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+    margin-top: 15px;
+    margin-right: 15px;
+    text-decoration: none;
+
+}
+.link-bar2-style{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 18px;
+
+}
+.link-bar-2 {
+	width: 500px;
+	height: 22px;
+	color: #444444;
+	font-family: "Source Sans 3";
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.3;
+	text-align: left;
+	margin-left: 70px;
+
+}
+.container-bookinfo {
+    width: 700px;
+	height: 500px;
+	margin-left: 72px;
+	margin-top: 20px;
+
+
+}
+.bookinfo-top{
+  display: grid;
+  grid-template-columns: 450px 586px;
+  grid-gap: 30px;
+  margin-top: 20px;
+}
+.image-bookcover {
+	width: 326px;
+	height: 483px;
+	background: #f6f6f6;
+	border-radius: 2px 2px 2px 2px;
+
+	margin-left: 70px;
+
+}
+
+
+.bookinfo-title {
+     display: flex;
+  flex-wrap: wrap;
+    justify-content: left;
+    align-items: flex-start;
+	width: 540px;
+	height: 140px;
+	color: #444444;
+	font-family: "Source Sans 3";
+	font-weight: 700;
+	font-size: 30px;
+	text-align: left;
+	 word-wrap: break-word; /* 允许单词断行 */
+  overflow-wrap: break-word; /* 允许单词断行 */
+
+  }
+
+.bookinfo-author {
+display: flex;
+    justify-content: left;
+    align-items: center;
+	width: 551px;
+	height: 32px;
+	color: #7a7a7a;
+	font-family: "Source Sans 3";
+	font-weight: 400;
+	font-size: 20px;
+	text-align: left;
+
+}
+
+.bookinfo-rate{
+  display: grid;
+  grid-template-columns: 150px 300px;
+  grid-gap: 10px;
+}
+.bookinfo-star {
+	width: 120px;
+	height: 54px;
+	color: #444444;
+	font-family: "Source Sans 3";
+	font-weight: bold;
+	font-size: 30px;
+	text-decoration:  line-through;
+	line-height: 1.3;
+	text-align: left;
+	margin-top: 30px;
+
+}
+.rating  {
+	width: 165px;
+	height: 37px;
+	margin-top: 28px;
+
+	text-align: left;
+	 display: inline-block;
+  vertical-align: middle;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  cursor: pointer;
+  width: 1em;
+  font-size: 2em;
+  color: #ccc;
+  text-shadow: 1px 1px #bbb;
+  background: linear-gradient(to right, #f70 0%, #f70 50%, #ccc 50%, #ccc 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rating label:before {
+  content: '★';
+}
+
+.rating input:checked ~ label {
+  background: linear-gradient(to right, #f70 0%, #f70 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rating:not(:checked) label:hover,
+.rating:not(:checked) label:hover ~ label {
+  color: #fb0;
+  text-shadow: 1px 1px #ddd;
+}
+.heart{
+margin-top: 5px;
+	margin-left: 110px;
+}
+
+.status-indicator {
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.status {
+  display: inline-block;
+  border-radius: 50%;
+  width: 29px;
+  height: 29px;
+}
+/**Available**/
+.book-status {
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.text {
+  font-size: 16px;
+}
+
+.dot.available {
+  background-color: green;
+}
+
+.dot.unavailable {
+  background-color: red;
+}
+
+
+
+.borrowbutton {
+	width: 216px;
+	height: 60px;
+	padding: 0px 10px 0px 10px;
+	background: #444444;
+	color: #ffffff;
+	border-color: #444444;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 30px 30px 30px 30px;
+	font-family: "Source Sans 3";
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	 margin-top: 40px;
+	 margin-left: -10px;
+}
+
+
+.review-link {
+  display: inline-block; /* Display elements as in-line block elements */
+  text-decoration: none; /* Remove underline */
+  color: #333;
+  width: 200px;
+  height: 30px;
+  text-align: left;
+  margin-top: 50px;
+  margin-left: 115px;
+
+}
+
+.review-link:hover .write-review {
+  color: #006ce5; /* Set the font colour on mouse hover */
+}
+
+/**/
+.text-container{
+padding: 4px 8px 4px 8px;
+      background: #f7f6f6;
+      color: #000000;
+      border-color: #f7f6f6;
+       margin-top: 50px;
+
+
+}
+    .text-container p {
+
+      font-family: "Helvetica";
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 2;
+      text-align: left;
+        max-height: 170px;
+      white-space: pre-line;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .text.expanded {
+      max-height: none;
+      /* 删除最大高度限制，以展示完整的文本 */
+    }
+    .read-more {
+      display: block;
+      text-align: left;
+      margin-top: 20px;
+      font-size: 18px;
+        border: none;
+        background: none;
+         text-decoration: underline;
+           color: blue;
+    }
+
+
+/*author-details*/
+
+.author-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle-arrow {
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.author-details {
+  display: none;
+}
+
+.author-info.show .toggle-arrow {
+  transform: rotate(90deg);
+}
+
+.author-info.show .author-details {
+  display: block;
+}
+
+
+
+/*Reviewe*/
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle-arrow {
+  font-size: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.reviews-details {
+  display: none;
+}
+
+.reviews-info.show .toggle-arrow {
+  transform: rotate(90deg);
+}
+
+.reviews-info.show .reviews-details {
+  display: block;
+}
+
+
+
+/*Reviewer and content of the review*/
+
+.comment {
+  margin-bottom: 20px;
+}
+
+.comment-header {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment-author {
+  margin-right: 10px;
+}
+
+.comment-body {
+  max-height: 60px;
+  overflow: hidden;
+}
+
+.comment-footer {
+  text-align: right;
+}
+
+.comment-toggle {
+  color: blue;
+  cursor: pointer;
+}
+
+.comment-body.expanded {
+  max-height: none;
+}
+
+
+
+/*related*/
+
+.related {
+
+	height: 37px;
+	color: #444444;
+	font-family: "Source Sans 3";
+	font-weight: bold;
+	font-size: 24px;
+	text-align: left;
+	margin-top: 30px;
+}
+.related-images {
+  position: relative;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.related-images.images {
+  display: flex;
+  margin-left: 30px;
+  transition: transform 0.5s ease-in-out;
+
+}
+
+.related-images .images img {
+    justify-content: flex-start;
+    align-items: center;
+   width: 150px;
+  height: 225px;
+  margin: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 2px #ddd;
+  margin-left: 30px;
+}
+
+.related-images .arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url('https://cdn.jsdelivr.net/gh/google/material-design-icons/navigation/1x_web/ic_chevron_right_black_24dp.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 20px 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+
+
+/**/

@@ -18,4 +18,7 @@ urlpatterns = [
     #path('restricted/', views.restricted, name='restricted'),
     path('logout/', views.user_logout, name='logout'),
 
+    #book details
+    path('book_details/', views.book_details, name='book_details'),
+
 ]
