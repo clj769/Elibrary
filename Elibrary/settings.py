@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 REGISTRATION_OPEN = True
 REGISTRATION_AUTO_LOGIN = True
-LOGIN_REDIRECT_URL = 'app:index'
+LOGIN_REDIRECT_URL = 'elib:index'
 LOGIN_URL = 'auth_login'
 
 # Application definition

@@ -24,6 +24,7 @@
 
         {% if user.is_authenticated %}
             <!--user is login, redirect to the account details-->
+            <!-- <li><a href="{% url 'auth_logout' %}?next={% url 'elib:index' %}">Logout</a></li> temp test log out -->
             <a href="">
                 <img src="{% static 'images/user.jpg' %}" alt="Picture of User" id="user-icon"/>
             </a>
