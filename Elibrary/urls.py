@@ -20,10 +20,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include
 
+
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('app/', include('app.urls')),
     path("admin/", admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

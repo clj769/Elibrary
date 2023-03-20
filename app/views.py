@@ -1,7 +1,6 @@
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.views import View
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -21,9 +20,11 @@ class IndexView(View):
         return render(request, 'app/index.html', context=context_dict)
 
 
+@login_required
 def borrow_history(request):
     if request.method == 'GET':
-        user_id = request.GET.get('user_id')  # the tag's 'name' in html
+        #user_id = request.GET.get('user_id')  # the tag's 'name' in html
+        user_id = request.user.id
         records = Record.objects.filter(user=user_id)
         data = {
             'records': [
@@ -152,6 +153,7 @@ def book_details(request):
         return render(request, 'app/book_details.html', context=data)
 
 
+@login_required
 def borrow_book(request):
     if request.method == 'POST':
         book_id = request.POST.get('book_id')
