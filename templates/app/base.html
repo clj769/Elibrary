@@ -29,7 +29,7 @@
             </a>
         {% else %}
             <!--user not login, redirect to login page-->
-            <a href="{% url 'elib:login' %}">
+            <a href="{% url 'auth_login' %}">
                 <img src="{% static 'images/user.jpg' %}" alt="Picture of User" id="user-icon"/>
             </a>
         {% endif %}

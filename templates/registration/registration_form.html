@@ -1,13 +1,17 @@
 {% load static %}
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>register</title>
     <link rel="stylesheet" href="{% static 'css/registration.css' %}">
 </head>
-{% block body_block %}
+
+<body>
     <div class="container">
         <h1 class="heading-text">Register</h1>
         <p class="paragraph-text">Not a member? Join now!</p>
+
         <form class="container" role="form" method="post" action=".">
             {% csrf_token %}
             <label class="input-label" for="id_username">Username</label>
@@ -30,4 +34,5 @@
             <button type="submit" class="button-register">Submit</button>
         </form>
     </div>
-{% endblock %}
+</body>
+</html>

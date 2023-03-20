@@ -107,7 +107,7 @@
 
                 <!-- Borrow Now btn & Review -->
                 <div>
-                    <form id="borrow-form" method="POST" action="{% url 'borrow_book' %}">
+                    <form id="borrow-form" method="POST" action="{% url 'elib:borrow_book' %}">
                         {% csrf_token %}
                         <input type="hidden" name="book_id" value="{{ book.book_id }}">
                         <button class="borrowbutton" id="borrow-now-btn" data-book-id="{{ book.book_id }}">Borrow Now

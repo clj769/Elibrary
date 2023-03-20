@@ -1,7 +1,5 @@
 from django import forms
 from app.models import Page, Category, Book
-from django.contrib.auth.models import User
-from app.models import UserProfile
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=Category.NAME_MAX_LENGTH,
@@ -36,20 +34,6 @@ class PageForm(forms.ModelForm):
 
         return cleaned_data
 
-
-class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password',)
-
-
-# Additional function
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ('website', 'picture',)
 
 class BorrowBookForm(forms.Form):
     book_id = forms.IntegerField()
