@@ -12,4 +12,10 @@ urlpatterns = [
     path('book_search/', views.book_search, name='book_search'),
     path('goto/', views.GotoView.as_view(), name='goto'),
 
+    #register & login
+    path('register/', views.register, name='register'),
+    path('login/', views.user_login, name='login'),
+    #path('restricted/', views.restricted, name='restricted'),
+    path('logout/', views.user_logout, name='logout'),
+
 ]

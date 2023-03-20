@@ -1,7 +1,12 @@
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import HttpResponse
 from django.views import View
 from django.shortcuts import render, redirect
 from django.urls import reverse
+
+from app.forms import UserForm, UserProfileForm
 from app.models import User, Book, Record, Category, Page
 
 
@@ -15,7 +20,7 @@ class IndexView(View):
         context_dict['categories'] = category_list
         context_dict['pages'] = page_list
 
-        return render(request, 'index.html', context=context_dict)
+        return render(request, 'app/index.html', context=context_dict)
 
 
 def borrow_history(request):
@@ -34,7 +39,7 @@ def borrow_history(request):
             ]
         }
         # print(data)
-        return render(request, 'borrow_history.html', context=data)
+        return render(request, 'app/borrow_history.html', context=data)
 
 """
 def search(request):
@@ -54,7 +59,7 @@ def search(request):
 """
 
 def contact_us(request):
-    return render(request, 'contactus.html')
+    return render(request, 'app/contactus.html')
 
 
 class ShowCategoryView(View):
@@ -79,7 +84,7 @@ class ShowCategoryView(View):
 
     def get(self, request, category_name_slug):
         context_dict = self.create_context_dict(category_name_slug)
-        return render(request, 'category.html', context_dict)
+        return render(request, 'app/category.html', context_dict)
 
     # @method_decorator(login_required)
     # def post(self, request, category_name_slug):
@@ -121,4 +126,66 @@ def book_search(request):
             # print('no book')
             pages = Page.objects.none()  # empty QuerySet
 
-    return render(request, 'book_search.html', {'pages': pages, 'book_query': book_query})
+    return render(request, 'app/book_search.html', {'pages': pages, 'book_query': book_query})
+
+def register(request):
+    registered = False
+
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        # profile_form = UserProfileForm(request.POST)
+
+        # if user_form.is_valid() and profile_form.is_valid():
+        if user_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            # profile = profile_form.save(commit=False)
+            # profile.user = user
+
+            # if 'picture' in request.FILES:
+            #     profile.picture = request.FILES['picture']
+            #
+            # profile.save()
+            registered = True
+        else:
+            print(user_form.errors)
+            # print(user_form.errors, profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    return render(request, 'registration/registration_form.html', context={'user_form': user_form, 'registered': registered})
+
+
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('app:index'))
+            else:
+                return HttpResponse("Your E=Library account is disabled.")
+        else:
+            print(f"Invalid login details: {username}, {password}")
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'registration/login.html')
+
+
+# @login_required
+# def restricted(request):
+#     return render(request, 'registration/restricted.html')
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect(reverse('app:login'))

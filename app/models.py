@@ -1,19 +1,17 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 
 
 # Create your models here.
-class User(models.Model):
-    userid = models.IntegerField(primary_key=True, null=False)
-    password = models.CharField(max_length=128, null=False)
-    username = models.CharField(max_length=128, null=False)
-    userlevel = models.IntegerField(null=False)  # userlevel: 0 is normal user, 1 is admin
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # The additional attributes we wish to include.
+    website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
 
     def __str__(self):
-        return self.username
-
-    class Meta:
-        db_table = 'User'  # ensure the table in database named User, not app_user
+        return self.user.username
 
 
 class Book(models.Model):
