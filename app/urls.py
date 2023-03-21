@@ -5,20 +5,21 @@ app_name = 'elib'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    #path('category/<slug:category_name_slug>/', views.ShowCategoryView.as_view(), name='show_category'),
+    # path('category/<slug:category_name_slug>/', views.ShowCategoryView.as_view(), name='show_category'),
     path('borrow_history/', views.borrow_history, name='borrow_history'),
     path('contactus/', views.contact_us, name='contact_us'),
 
     path('search/', views.search, name='search'),
-    #path('goto/', views.GotoView.as_view(), name='goto'),
+    # path('goto/', views.GotoView.as_view(), name='goto'),
 
-    #book details
+    # book details
     path('book_details/<int:book_id>/', views.book_details, name='book_details'),
     path('borrow_book/', views.borrow_book, name='borrow_book'),
 
-    #personal page
+    # personal page
     path('personal_page/', views.personal_page, name='personal_page'),
 
-    #recommends
-    path('recommends/',views.recommends,name='recommends'),
+    # recommends
+    path('recommends/', views.recommends, name='recommends'),
+
 ]
