@@ -1,0 +1,71 @@
+.fo__content  {
+    color: rgb(255, 255, 255);
+    font-family: "Source Sans 3", serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    letter-spacing: 0px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 138px;
+    height: 35px;
+    padding: 0px 10px;
+    min-width: 1px;
+    min-height: 1px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    display: table-cell;
+    word-break: break-word;
+}
+.stencil-grouped div, .stencil div {
+    box-sizing: border-box;
+}
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: initial;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+style attribute {
+    font-size: 30px;
+    text-align: left;
+    font-style: normal;
+    color: rgb(68, 68, 68);
+}
+.patch-contenteditable, .stencil {
+    font-variant-ligatures: none;
+    word-break: keep-all;
+}
+.stencil {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+body {
+    overflow: hidden;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+    word-break: keep-all;
+}
+body {
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Arial,sans-serif;
+    font-size: 90%;
+    line-height: 1.4;
+    background: #f5f5f5;
+}
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: initial;
+}
