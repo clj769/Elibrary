@@ -79,3 +79,14 @@ button[type="submit"] {
     background: #444444;
     float: right;
 }
+
+#logout{
+ 	width: 100px;
+	height: 23px;
+	color: #444444;
+	font-family: "Source Sans 3";
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+    float: right;
+}

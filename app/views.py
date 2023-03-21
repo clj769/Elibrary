@@ -25,6 +25,7 @@ def borrow_history(request):
     if request.method == 'GET':
         #user_id = request.GET.get('user_id')  # the tag's 'name' in html
         user_id = request.user.id
+        print(user_id)
         records = Record.objects.filter(user=user_id)
         data = {
             'records': [
