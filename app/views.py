@@ -359,3 +359,25 @@ def personal_page(request, uid):
     # except:
     #     return HttpResponse("用户信息加载失败！")
     return render(request, 'app/personalPage.html', context=data)
+
+
+def recommends(request):
+    if request.method == 'GET':
+        category = request.GET.get('category')
+        if category:
+            books = Book.objects.filter(bookcategory=category)
+            data = {
+                'books': [
+                    {
+                        'book_id': book.bookid,
+                        'book_title': book.title,
+                        'book_author': book.author,
+                        'book_num': book.booknum,
+                        'book_description': book.description,
+                    } for book in books
+                ]
+            }
+        else:
+            data = {'books': []}
+
+        return render(request, 'app/recommends.html', context=data)

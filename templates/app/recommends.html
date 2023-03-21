@@ -43,34 +43,15 @@
 				</ul>
 			</div>
 			<hr />
-<!--			<div class="col-md-2 col-md-offset-2">
-				<button  class="fo__content" id ="Contact us"></button>
-			</div>-->
-
-			<div div class ="row">
-			<div class="col-md-3">
-				<img src ="{% static 'images/portrait.png' %}" style ="width:120px; height:120px;">
-<!--			<img src="{% static 'images/user.jpg' %}" alt="Picture of User" class="user_icon"/>-->
-			</div>
-			<div class="col-md-3">
-				<p1>{{records.0.username}}</p1>
-				<p2>ID: {{records.0.user_id}}</p2>
-			</div>
-			<div class="col-md-3 col-md-offset-3">
-				<p2>Date of creation: {{records.0.current}}</p2>
-			</div>
-		</div>
-
-		<hr />
 		<div>
-			<h1>Books being borrowed</h1>
-			{% for item in records%}
-				<div class = "col-md-4">
+			<h1>Recommends</h1>
+			{% for item in books%}
+				<div class = "col-md-3">
 					<div class = "thumbnail">
-						<img src ="{{record.book_pic }}" style ="width:240px; height:360px;">
-						<h3>{{item.book_name }}</h3>
-						<p>Rent Time:{{item.rent_date}}</p>
-						<p>Deadline:{{item.deadline}}</p>
+						<img src ="{{record.book_pic }}" style ="width:200px; height:300px;">
+						<h3>{{item.book_title }}</h3>
+						<p>Rent Time:{{item.book_author}}</p>
+						<p>Deadline:{{item.book_num}}</p>
 					</div>
 				</div>
 			{% endfor %}
