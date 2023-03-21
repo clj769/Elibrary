@@ -9,27 +9,9 @@
 	<link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
 	<script src="{% static 'js/bootstrap.js' %}" ></script>
 	<script src="{% static 'js/jquery.min.js' %}"></script>
+{% endblock %}
 {% block content %}
 
-
-<!--	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
-	<link rel="stylesheet" type="text/css" href="../demo.css">
-	<script type="text/javascript" src="../../jquery.min.js"></script>
-	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="/js/axios.js"></script>-->
-<!--	<div class ="container" style =" height:100%">
-		<div class ="row">
-			<div class="col-md-2">
-				<label class="copyright"><p1> @<small> E-Library</small></p1></label>
-			</div>
-			<div class="col-md-6 col-md-offset-1" >
-				<input class="fo__content"  name="search" class ="input" placeholder="Search book...">
-			</div>
-			<div class="col-md-2 offset-md-3">
-				<p>{{records.0.username}}</p>
-			</div>
-		</div>-->
 		<div class ="row">
 			<div class="col-md-8">
 				<ul class = "nav nav-tabs">
@@ -48,8 +30,10 @@
 			{% for item in books%}
 				<div class = "col-md-3">
 					<div class = "thumbnail">
-						<img src ="{{record.book_pic }}" style ="width:200px; height:300px;">
+                        <a href="{% url 'elib:book_details' item.book_id %}">
+						<img src ="{{item.book_pic }}" style ="width:200px; height:300px;">
 						<h3>{{item.book_title }}</h3>
+                        </a>
 						<p>Rent Time:{{item.book_author}}</p>
 						<p>Deadline:{{item.book_num}}</p>
 					</div>
@@ -58,3 +42,4 @@
 		</div>
 	</div>
 	</div>
+{% endblock %}

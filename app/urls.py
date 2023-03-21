@@ -18,4 +18,7 @@ urlpatterns = [
 
     #personal page
     path('personal_page/', views.personal_page, name='personal_page'),
+
+    #recommend
+    path('recommends/',views.recommends,name='recommends'),
 ]

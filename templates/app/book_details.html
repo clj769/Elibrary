@@ -31,14 +31,13 @@
 
     <div class="container2">
         <div class="link-bar1-style">
-            <a class="link-bar-1" href="url"> Literature </a>
-            <a class="link-bar-1" href="url"> Fiction </a>
-            <a class="link-bar-1" href="url"> History </a>
-            <a class="link-bar-1" href="url"> Art </a>
-            <a class="link-bar-1" href="url"> Business</a>
-            <a class="link-bar-1" href="url"> Comics </a>
-            <a class="link-bar-1" href="url"> Science </a>
-            <a class="link-bar-1" href="url"> Social </a>
+            <li><a href="{% url 'elib:recommends' %}?category=literature">Literature</a></li>
+            <li><a href="{% url 'elib:recommends' %}?category=fiction">Fiction</a></li>
+            <li><a href="{% url 'elib:recommends' %}?category=history">History</a></li>
+            <li><a href="{% url 'elib:recommends' %}?category=business">Business</a></li>
+            <li><a href="{% url 'elib:recommends' %}?category=comics">Comics</a></li>
+            <li><a href="{% url 'elib:recommends' %}?category=science">Science</a></li>
+            <li><a href="{% url 'elib:recommends' %}?category=social">Social</a></li>
         </div>
     </div>
 

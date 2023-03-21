@@ -176,6 +176,7 @@ def recommends(request):
             data = {
                 'books': [
                     {
+                        'book_pic': book.bookpic,
                         'book_id': book.bookid,
                         'book_title': book.title,
                         'book_author': book.author,
