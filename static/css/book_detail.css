@@ -525,6 +525,26 @@ padding: 4px 8px 4px 8px;
   cursor: pointer;
 }
 
+.new .thumbnail {
+    width: 350px;
+    height: 500px;
+    margin-right: 10px;
+}
+
+.new .thumbnail img {
+    width: 225px;
+    height: 300px;
+}
+
+.col-md-3 {
+    float: left;
+    height: 80px;
+    display: block;
+    line-height: 80px;
+    text-align: center;
+    margin-top: 10px;
+}
+
 
 
 /**/

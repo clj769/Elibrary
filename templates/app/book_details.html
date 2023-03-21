@@ -5,7 +5,8 @@
 
 {% block link %}
     {{ block.super }}
-	<link rel="stylesheet" href="{% static 'css/book_detail.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/book_detail.css' %} ">
+
     <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
     <script src="{% static 'js/bookDetails.js' %}"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -14,169 +15,178 @@
 
 {% block content %}
 
-<div class="main">
+    <div class="main">
 
-    <!--book title author rate description-->
-    <div class="bookinfo-top">
+        <!--book title author rate description-->
+        <div class="bookinfo-top">
 
-        <!--bookcover img -->
-        <div class="container">
-        <div class="image-bookcover">
-            <img src="{{book.bookpic}}" alt="book cover" id="bookcover">
-        </div>
-        </div>
-
-        <!-- booktitle -->
-        <div>
-            <p1 class="bookinfo-title">{{ book.title }}</p1>
-            <!-- author -->
-            <p class="bookinfo-author"> {{ book.author }}</p>
-
-            <div class="bookinfo-rate">
-
-                <!-- Rate -->
-                <p class="bookinfo-star">Rate It</p>
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5"/>
-                    <label for="star5" title="5星"></label>
-                    <input type="radio" id="star4" name="rating" value="4"/>
-                    <label for="star4" title="4星"></label>
-                    <input type="radio" id="star3" name="rating" value="3"/>
-                    <label for="star3" title="3星"></label>
-                    <input type="radio" id="star2" name="rating" value="2"/>
-                    <label for="star2" title="2星"></label>
-                    <input type="radio" id="star1" name="rating" value="1"/>
-                    <label for="star1" title="1星"></label>
+            <!--bookcover img -->
+            <div class="container">
+                <div class="image-bookcover">
+                    <img src="{{ book.bookpic }}" alt="book cover" id="bookcover">
                 </div>
-
-                <!-- Available Dot -->
-                {% if book_num > 0 %}
-                <div class="book-status">
-                    <div class="dot available"></div>
-                    <div class="text">Available</div>
-                </div>
-                {% else %}
-                <div class="book-status">
-                    <div class="dot unavailable"></div>
-                    <div class="text">Unavailable</div>
-                </div>
-                {% endif %}
-
-                <!-- heart -->
-                <div class="heart">
-                    <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
-                </div>
-
-                <!-- Borrow Now btn & Review -->
-                <div>
-                    <form id="borrow-form" method="POST" action="{% url 'elib:borrow_book'%}">
-                        {% csrf_token %}
-                        <input type="hidden" name="book_id" id="book-id" value="{{ book.bookid }}">
-                        <button class="borrowbutton" id="borrow-now-btn" data-book-id="{{ book.bookid }}">Borrow Now</button>
-                    </form>
-                </div>
-
-                <div class=" write-review ">
-                    <a href=" " class="review-link" href="url">
-                        <i class="fa fa-comment-o fa-3x"></i>
-                        Write a Review
-                    </a>
-                </div>
-
-
             </div>
-        </div>
-    </div>
 
-    <div id="container">
+            <!-- booktitle -->
+            <div>
+                <p1 class="bookinfo-title">{{ book.title }}</p1>
+                <!-- author -->
+                <p class="bookinfo-author"> {{ book.author }}</p>
 
-        <!--bottom introduction -->
-        <!--    <div class="bookintro">-->
-        <div class="text-container">
-            <p class="text">{{ book.description }}</p>
-            <button class="read-more">Read More</button>
-        </div>
+                <div class="bookinfo-rate">
 
-        <hr>
-
-        <div class="author-info">
-            <div class="author-header">
-                <h3>Author Details</h3>
-                <span class="toggle-arrow">&#x25B6;</span>
-            </div>
-            <div class="author-details">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies ligula in ex consequat,
-                    vel
-                    interdum nibh pulvinar. Nulla eget maximus tortor. Donec faucibus odio in sapien convallis, id
-                    interdum
-                    ipsum lobortis. Sed blandit eget mi ut tempus. Sed porta aliquet dui, in efficitur purus vehicula
-                    sit
-                    amet. Fusce et nibh sed lectus pellentesque varius. Pellentesque pharetra auctor ex at venenatis.
-                    Sed
-                    non metus non sem tincidunt lobortis sed quis tellus.</p>
-            </div>
-        </div>
-
-
-        <hr>
-        <div class="reviews-info">
-            <div class="reviews-header">
-                <h3>Reviews</h3>
-                <span class="toggle-arrow">&#x25B6;</span>
-            </div>
-            <div class="reviews-details">
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="comment-author">John Doe</span>
-                        <span class="comment-date">2023-03-20</span>
+                    <!-- Rate -->
+                    <p class="bookinfo-star">Rate It</p>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5"/>
+                        <label for="star5" title="5星"></label>
+                        <input type="radio" id="star4" name="rating" value="4"/>
+                        <label for="star4" title="4星"></label>
+                        <input type="radio" id="star3" name="rating" value="3"/>
+                        <label for="star3" title="3星"></label>
+                        <input type="radio" id="star2" name="rating" value="2"/>
+                        <label for="star2" title="2星"></label>
+                        <input type="radio" id="star1" name="rating" value="1"/>
+                        <label for="star1" title="1星"></label>
                     </div>
-                    <div class="comment-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl sit amet urna interdum
-                        ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Donec eu nisl sit amet urna interdum
-                        ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Donec eu nisl sit amet urna interdum
-                        ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing elit. Donec eu nisl sit amet urna interdum
-                        ullamcorper. Sed non lectus vel dolor eleifend tempus.
+
+                    <!-- Available Dot -->
+                    {% if book.book_num > 0 %}
+                        <div class="book-status">
+                            <div class="dot available"></div>
+                            <div class="text">Available</div>
+                        </div>
+                    {% else %}
+                        <div class="book-status">
+                            <div class="dot unavailable"></div>
+                            <div class="text">Unavailable</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- heart -->
+                    <div class="heart">
+                        <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
                     </div>
-                    <div class="comment-footer">
-                        <a href="#" class="comment-toggle">Show More</a>
+
+                    <!-- Borrow Now btn & Review -->
+                    <div>
+                        <form id="borrow-form" method="POST" action="{% url 'elib:borrow_book' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="book_id" id="book-id" value="{{ book.bookid }}">
+                            <button class="borrowbutton" id="borrow-now-btn" data-book-id="{{ book.bookid }}">Borrow
+                                Now
+                            </button>
+                        </form>
                     </div>
-                </div>
-            </div>
 
-        </div>
-    </div>
-
-
-    <hr>
-
-    <h3> Related Books</h3>
-    <div class="container">
-    <div class="row">
-        {% for related_book in related_books %}
-            <div class="col-sm-6 col-md-4">
-                <div class = "thumbnail">
-                        <a href="{% url 'elib:book_details' related_book.bookid %}">
-                        <img src="{{ related_book.bookpic }}" alt="related book pic 1">
-                        <h4>{{ related_book.title }}</h4>
-                        <p>{{ related_book.author }}</p>
-                        {% if related_book.booknum > 0 %}
-                            <p class="available">Available</p>
-                        {% else %}
-                            <p class="unavailable">Unavailable</p>
-                        {% endif %}
+                    <div class=" write-review ">
+                        <a href=" " class="review-link" href="url">
+                            <i class="fa fa-comment-o fa-3x"></i>
+                            Write a Review
                         </a>
+                    </div>
+
 
                 </div>
             </div>
-        {% endfor %}
-        <button class="arrow"></button>
+        </div>
 
+        <div id="container">
+
+            <!--bottom introduction -->
+            <!--    <div class="bookintro">-->
+            <div class="text-container">
+                <p class="text">{{ book.description }}</p>
+                <button class="read-more">Read More</button>
+            </div>
+
+            <hr>
+
+            <div class="author-info">
+                <div class="author-header">
+                    <h3>Author Details</h3>
+                    <span class="toggle-arrow">&#x25B6;</span>
+                </div>
+                <div class="author-details">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies ligula in ex
+                        consequat,
+                        vel
+                        interdum nibh pulvinar. Nulla eget maximus tortor. Donec faucibus odio in sapien convallis, id
+                        interdum
+                        ipsum lobortis. Sed blandit eget mi ut tempus. Sed porta aliquet dui, in efficitur purus
+                        vehicula
+                        sit
+                        amet. Fusce et nibh sed lectus pellentesque varius. Pellentesque pharetra auctor ex at
+                        venenatis.
+                        Sed
+                        non metus non sem tincidunt lobortis sed quis tellus.</p>
+                </div>
+            </div>
+
+
+            <hr>
+            <div class="reviews-info">
+                <div class="reviews-header">
+                    <h3>Reviews</h3>
+                    <span class="toggle-arrow">&#x25B6;</span>
+                </div>
+                <div class="reviews-details">
+                    <div class="comment">
+                        <div class="comment-header">
+                            <span class="comment-author">John Doe</span>
+                            <span class="comment-date">2023-03-20</span>
+                        </div>
+                        <div class="comment-body">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu nisl sit amet urna
+                            interdum
+                            ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing elit. Donec eu nisl sit amet urna interdum
+                            ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing elit. Donec eu nisl sit amet urna interdum
+                            ullamcorper. Sed non lectus vel dolor eleifend tempus. Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing elit. Donec eu nisl sit amet urna interdum
+                            ullamcorper. Sed non lectus vel dolor eleifend tempus.
+                        </div>
+                        <div class="comment-footer">
+                            <a href="#" class="comment-toggle">Show More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr>
+
+        <h3> Related Books</h3>
+        <div class="new">
+            <div class="container">
+                <div class="row">
+                    {% for related_book in related_books %}
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <a href="{% url 'elib:book_details' related_book.bookid %}">
+                                    <img src="{{ related_book.bookpic }}" alt="related book pic 1">
+                                    <h4>{{ related_book.title }}</h4>
+                                    <p>{{ related_book.author }}</p>
+                                    {% if related_book.booknum > 0 %}
+                                        <p class="available">Available</p>
+                                    {% else %}
+                                        <p class="unavailable">Unavailable</p>
+                                    {% endif %}
+                                </a>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-</div>
 
 
 
