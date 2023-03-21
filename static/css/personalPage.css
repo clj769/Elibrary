@@ -69,3 +69,7 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
     font: inherit;
     vertical-align: initial;
 }
+
+#user-image{
+    float: left;
+}

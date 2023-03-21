@@ -1,24 +1,39 @@
 from datetime import timedelta, datetime
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Min
 from django.http import JsonResponse
-from django.views import View
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from app.models import Book, Record, Category, Page
+from app.models import Book, Record
 
+
+#rewrite index page
+def index(request):
+    #show 3 new books by largest bookid
+    new_books = Book.objects.order_by('-bookid')[:3]
+
+    #each catagory get the first id's book
+    categories = Book.objects.values('bookcategory').annotate(bookid_min=Min('bookid'))
+    category_books = [Book.objects.get(bookid=category['bookid_min']) for category in categories]
+
+    data = {
+        'new_books': new_books,
+        'category_books':category_books,
+    }
+
+    return render(request, 'app/index.html', context=data)
 
 # Create your views here.
-class IndexView(View):
-    def get(self, request):
-        category_list = Category.objects.order_by('-likes')[:4]
-        page_list = Page.objects.order_by('-views')[:3]
-
-        context_dict = {}
-        context_dict['categories'] = category_list
-        context_dict['pages'] = page_list
-
-        return render(request, 'app/index.html', context=context_dict)
+# class IndexView(View):
+#     def get(self, request):
+#         category_list = Category.objects.order_by('-likes')[:4]
+#         page_list = Page.objects.order_by('-views')[:3]
+#
+#         context_dict = {}
+#         context_dict['categories'] = category_list
+#         context_dict['pages'] = page_list
+#
+#         return render(request, 'app/index.html', context=context_dict)
 
 
 @login_required
@@ -39,7 +54,7 @@ def borrow_history(request):
                 } for record in records
             ]
         }
-        print(data)
+        #print(data)
         return render(request, 'app/borrow_history.html', context=data)
 
 
@@ -64,44 +79,44 @@ def contact_us(request):
     return render(request, 'app/contactus.html')
 
 
-class ShowCategoryView(View):
-    def create_context_dict(self, category_name_slug):
-        """
-        A helper method that was created to demonstarte the power of class-based views.
-        You can reuse this method in the get() and post() methods!
-        """
-        context_dict = {}
-
-        try:
-            category = Category.objects.get(slug=category_name_slug)
-            pages = Page.objects.filter(category=category).order_by('-views')
-
-            context_dict['pages'] = pages
-            context_dict['category'] = category
-        except Category.DoesNotExist:
-            context_dict['pages'] = None
-            context_dict['category'] = None
-
-        return context_dict
-
-    def get(self, request, category_name_slug):
-        context_dict = self.create_context_dict(category_name_slug)
-        return render(request, 'app/category.html', context_dict)
-
-
-class GotoView(View):
-    def get(self, request):
-        page_id = request.GET.get('page_id')
-
-        try:
-            selected_page = Page.objects.get(id=page_id)
-        except Page.DoesNotExist:
-            return redirect(reverse('elib:index'))
-
-        selected_page.views = selected_page.views + 1
-        selected_page.save()
-
-        return redirect(selected_page.url)
+# class ShowCategoryView(View):
+#     def create_context_dict(self, category_name_slug):
+#         """
+#         A helper method that was created to demonstarte the power of class-based views.
+#         You can reuse this method in the get() and post() methods!
+#         """
+#         context_dict = {}
+#
+#         try:
+#             category = Category.objects.get(slug=category_name_slug)
+#             pages = Page.objects.filter(category=category).order_by('-views')
+#
+#             context_dict['pages'] = pages
+#             context_dict['category'] = category
+#         except Category.DoesNotExist:
+#             context_dict['pages'] = None
+#             context_dict['category'] = None
+#
+#         return context_dict
+#
+#     def get(self, request, category_name_slug):
+#         context_dict = self.create_context_dict(category_name_slug)
+#         return render(request, 'app/category.html', context_dict)
+#
+#
+# class GotoView(View):
+#     def get(self, request):
+#         page_id = request.GET.get('page_id')
+#
+#         try:
+#             selected_page = Page.objects.get(id=page_id)
+#         except Page.DoesNotExist:
+#             return redirect(reverse('elib:index'))
+#
+#         selected_page.views = selected_page.views + 1
+#         selected_page.save()
+#
+#         return redirect(selected_page.url)
 
 
 def book_details(request, book_id):

@@ -6,23 +6,10 @@
 
 {% block link %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="head">
-    <div class="container">
-        <ul>
-            {% for category in categories %}
-                <li class="col-md-1" style="display:block;margin-top: 15px"><a
-                        href="{% url 'elib:show_category' category.slug %}">{{ category.name }}</a></li>
-            {% endfor %}
-        </ul>
-
-    </div>
-</div>
-
 <div class="page-header">
     <div class="container banner">
         <img src="https://previews.123rf.com/images/tasia12/tasia121203/tasia12120300024/12785479-book-shelf-banner-funny-cartoon.jpg"
@@ -34,92 +21,46 @@
 <div class="new page-header">
     <div class="container">
         <h3>New Books!</h3>
-        {% if pages %}
-            <ul>
-                {% for page in pages %}
-                    <li style="display: block">
+        {% for new_book in new_books %}
+              <li style="display: block">
                         <div class="row">
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail">
-                                    <a href="{{ page.url }}">
-                                        <img src="https://img2.doubanio.com/view/subject/s/public/s34456762.jpg" alt="">
+                                    <a href="{% url 'elib:book_details' book_id=new_book.bookid %}">
+                                        <img src="{{ new_book.bookpic }}" alt="new book pic">
                                     </a>
                                     <div class="caption">
-                                        <a href="{{ page.url }}">{{ page.title }}</a>
-                                        <p>
-                                            上野千鹤子2023全新作品！<br>
-                                            写给所有女性的清醒之书。<br>
-                                        </p>
+                                        <a href="{% url 'elib:book_details' book_id=new_book.bookid %}">
+                                            <p> {{ new_book.title }} {{ new_book.author }}</p></a>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no pages present.</strong>
-        {% endif %}
-
-
+              </li>
+        {% endfor %}
     </div>
 </div>
 
 <div class="category">
     <div class="container">
         <h3>Category Highlights!</h3>
+        {% for cbook in category_books %}
         <div class="row">
             <div class="col-xs-6 col-md-3">
                 <div class="thumbnail">
-                    <a href="https://book.douban.com/subject/36211756/?icn=index-latestbook-subject">
-                        <img src="https://img2.doubanio.com/view/subject/s/public/s34456762.jpg" alt="">
-                    </a>
+                    <a href="{% url 'elib:book_details' book_id=cbook.bookid %}"></a>
+                        <img src="{{ cbook.bookpic }}" alt="category hihgligts">
                     <div class="caption">
-                        <h3><a href="app/category/literature/">Literature</a>
-                        </h3>
-                        <p>
-                            上野千鹤子2023全新作品！
-                            写给所有女性的清醒之书。
-                        </p>
+                        <a href="{% url 'elib:book_details' book_id=cbook.bookid %}">
+                        <h3>{{ cbook.bookcategory }}</h3>
+                        <p>{{ cbook.title }} {{ cbook.author }}</p>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-3">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Fiction</h3>
-                        <p>...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-3">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Science</h3>
-                        <p>...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-3">
-                <div class="thumbnail">
-                    <img src="..." alt="...">
-                    <div class="caption">
-                        <h3>Art</h3>
-                        <p>...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+         {% endfor %}
     </div>
 </div>
 {% endblock %}
-
 
