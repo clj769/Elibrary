@@ -5,41 +5,42 @@
 
 {% block link %}
     {{ block.super }}
+     <link rel="stylesheet" type="text/css" href="{% static 'css/personalPage.css' %}">
 {% endblock %}
 
 {% block content %}
 		<div class ="row">
-			<div class ="row">
+                <div class="col-md-3">
+                    <img src ="{% static 'images/luffy.png' %}">
+                </div>
 
-			<div class="col-md-3">
-				<img src ="{% static 'images/luffy.png' %}" id="user-image">
-			</div>
+                <div class="col-md-3">
+                    <h3>Username: {{username}}</h3>
+                    <h3>ID: {{uid}}</h3>
+                </div>
 
-			<div class="col-md-3">
-				<h1>Username: {{username}}</h1>
-				<h2>ID: {{uid}}</h2>
-			</div>
+                <div class="col-md-3 col-md-offset-3">
+                    <h3>Date of creation: {{date_joined}}</h3>
+                </div>
 
-			<div class="col-md-3 col-md-offset-3">
-				<h2>Date of creation: {{date_joined}}</h2>
-			</div>
-		</div>
+        </div>
 
-		<hr />
-		<div>
-        <a href="{% url 'elib:borrow_history' %}">
-			<h1>Books being borrowed</h1>
-        </a>
-			{% for item in records %}
-				<div class = "col-md-4">
-					<div class = "thumbnail">
-                        <img src ="{{ item.book_pic }}" alt="{{ item.book_name }}" style ="width:240px; height:360px;">
-                        <h3><a href="{% url 'elib:book_details' book_id=item.book_id %}">{{item.book_name }}</a></h3>
-						<p>Rent Time:{{item.borrow_date}}</p>
-						<p>Deadline:{{item.deadline}}</p>
-					</div>
-				</div>
-			{% endfor %}
-		</div>
-	</div>
+    <hr />
+
+    <div class="container">
+            <a href="{% url 'elib:borrow_history' %}">
+                <h1>Books being borrowed</h1>
+            </a>
+                {% for item in records %}
+                    <div class = "col-sm-6 col-md-4">
+                        <div class = "thumbnail">
+                            <img src ="{{ item.book_pic }}" alt="{{ item.book_name }}">
+                            <h4><a href="{% url 'elib:book_details' book_id=item.book_id %}">{{item.book_name }}</a></h4>
+                            <p>Rent Time:{{item.borrow_date}}</p>
+                            <p>Deadline:{{item.deadline}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+    </div>
+
 {% endblock %}

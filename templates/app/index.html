@@ -31,12 +31,15 @@
                                     </a>
                                     <div class="caption">
                                         <a href="{% url 'elib:book_details' book_id=new_book.bookid %}">
-                                            <p> {{ new_book.title }} {{ new_book.author }}</p></a>
+                                            <p> {{ new_book.title }}</p>
+                                        </a>
+                                            <p> {{ new_book.author }}</p>
+
                                     </div>
                                     </div>
                                 </div>
                             </div>
-              </li>
+                    </li>
         {% endfor %}
     </div>
 </div>
@@ -46,15 +49,18 @@
         <h3>Category Highlights!</h3>
         {% for cbook in category_books %}
         <div class="row">
-            <div class="col-xs-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <a href="{% url 'elib:book_details' book_id=cbook.bookid %}"></a>
                         <img src="{{ cbook.bookpic }}" alt="category hihgligts">
                     <div class="caption">
+
+                        <h4>{{ cbook.bookcategory }}</h4>
                         <a href="{% url 'elib:book_details' book_id=cbook.bookid %}">
-                        <h3>{{ cbook.bookcategory }}</h3>
-                        <p>{{ cbook.title }} {{ cbook.author }}</p>
+                            <p>{{ cbook.title }}</p>
                         </a>
+                            <p>{{ cbook.author }}</p>
+
                     </div>
                 </div>
             </div>

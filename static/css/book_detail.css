@@ -160,9 +160,13 @@ body {
 	height: 483px;
 	background: #f6f6f6;
 	border-radius: 2px 2px 2px 2px;
-
 	margin-left: 70px;
 
+}
+
+.image-bookcover img {
+    width: 225px;
+    height: 300px;
 }
 
 

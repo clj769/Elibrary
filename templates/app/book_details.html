@@ -26,7 +26,6 @@
 
         <!-- booktitle -->
         <div>
-
             <p1 class="bookinfo-title">{{ book.title }}</p1>
             <!-- author -->
             <p class="bookinfo-author"> {{ book.author }}</p>
@@ -65,7 +64,6 @@
                 <div class="heart">
                     <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
                 </div>
-
 
                 <!-- Borrow Now btn & Review -->
                 <div>
@@ -152,24 +150,30 @@
 
 
     <hr>
-    <div class="related"> Related Books</div>
-    <div class="related-images">
-        <div class="images">
-                {% for related_book in related_books %}
-                    <a href="{% url 'elib:book_details' related_book.bookid %}">
-                    <img src="{{ related_book.bookpic }}" alt="related book pic 1">
-                    <h4>{{ related_book.title }}</h4>
-                    <p>{{ related_book.author }}</p>
-                    {% if related_book.booknum > 0 %}
-                        <p class="available">Available</p>
-                    {% else %}
-                        <p class="unavailable">Unavailable</p>
-                    {% endif %}
-                    </a>
-                {% endfor %}
-        </div>
+
+    <h3> Related Books</h3>
+    <div class="container">
+    <div class="row">
+        {% for related_book in related_books %}
+            <div class="col-sm-6 col-md-4">
+                <div class = "thumbnail">
+                        <a href="{% url 'elib:book_details' related_book.bookid %}">
+                        <img src="{{ related_book.bookpic }}" alt="related book pic 1">
+                        <h4>{{ related_book.title }}</h4>
+                        <p>{{ related_book.author }}</p>
+                        {% if related_book.booknum > 0 %}
+                            <p class="available">Available</p>
+                        {% else %}
+                            <p class="unavailable">Unavailable</p>
+                        {% endif %}
+                        </a>
+
+                </div>
+            </div>
+        {% endfor %}
         <button class="arrow"></button>
 
+    </div>
     </div>
 </div>
 
