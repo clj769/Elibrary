@@ -9,23 +9,22 @@
 {% endblock %}
 {% block content %}
 
-
-        <div class="container">
-            <h1>Recommends</h1>
-            {% for item in books %}
-
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <a href="{% url 'elib:book_details' item.book_id %}">
-                            <img src="{{ item.book_pic }}">
-                            <h3>{{ item.book_title }}</h3>
-                        </a>
-                        <p>author:{{ item.book_author }}</p>
-                        <p>book for rent:{{ item.book_num }}</p>
-                    </div>
+<div class="cats">
+    <div class="container">
+        <h1>Recommends</h1>
+        {% for item in books %}
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <a href="{% url 'elib:book_details' item.book_id %}">
+                        <img src="{{ item.book_pic }}">
+                        <h3>{{ item.book_title }}</h3>
+                    </a>
+                    <p>author:{{ item.book_author }}</p>
+                    <p>book for rent:{{ item.book_num }}</p>
                 </div>
-            {% endfor %}
             </div>
-
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock %}
