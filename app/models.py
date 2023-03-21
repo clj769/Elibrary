@@ -13,6 +13,8 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     booknum = models.IntegerField(null=False)  # remain number
     description = models.TextField()
+    bookpic = models.TextField()
+    bookcategory = models.TextField()
 
     def __str__(self):
         return self.title
@@ -28,6 +30,8 @@ class Record(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     borrow_date = models.DateTimeField(auto_now_add=True)
     return_date = models.DateTimeField(null=True, blank=True)
+    rent_deadline = models.DateTimeField(null=True, blank=True)
+    rent_sts = models.BooleanField(default=True)
 
     class Meta:
         db_table = 'Record'
