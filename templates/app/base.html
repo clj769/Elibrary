@@ -23,8 +23,8 @@
         <label class="copyright">@E-Library</label>
 
         {% if user.is_authenticated %}
-            <!--user is login, redirect to the account details-->
-            <a href="">
+            <!--user is login, redirect to the personal page-->
+            <a href="{% url 'elib:personal_page' %}">
                 <img src="{% static 'images/user.jpg' %}" alt="Picture of User" id="user-icon"/>
             </a>
             <a href="{% url 'auth_logout' %}?next={% url 'elib:index' %}" id="logout" class="logout">Logout</a>
@@ -38,7 +38,7 @@
 
         <a href="{% url 'elib:contact_us' %}" id="contact-button">Contact Us</a>
 
-        <form id="search-form" action="{% url 'elib:book_search' %}" method="post" autocomplete="off">
+        <form id="search-form" action="{% url 'elib:search' %}" method="post" autocomplete="off">
             {% csrf_token %}
             <input type="text" id="search" name="search" placeholder="Search book...">
             <button type="submit" id="search-button">Search</button>

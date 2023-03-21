@@ -13,7 +13,6 @@
 {% endblock %}
 
 
-
 {% block content %}
 <div class="header">
 
@@ -30,8 +29,6 @@
         </div>
     </div>
 
-    {% if request.method == 'GET'%}
-    {% for book in books %}
     <div class="container2">
         <div class="link-bar1-style">
             <a class="link-bar-1" href="url"> Literature </a>
@@ -42,11 +39,6 @@
             <a class="link-bar-1" href="url"> Comics </a>
             <a class="link-bar-1" href="url"> Science </a>
             <a class="link-bar-1" href="url"> Social </a>
-        </div>
-
-        <div class="button-contact-style">
-            <button class="button-contact">Contact Us</button>
-
         </div>
     </div>
 
@@ -60,19 +52,20 @@
 
         <!--bookcover img -->
         <div class="image-bookcover">
-            <img src="/static/images/luffy.png" alt="book cover">
+            <img src="{{book.bookpic}}" alt="book cover">
         </div>
+
         <!-- booktitle -->
         <div>
 
-            <p1 class="bookinfo-title">{{ book.book_title }}</p1>
+            <p1 class="bookinfo-title">{{ book.title }}</p1>
             <!-- author -->
-            <p class="bookinfo-author"> {{ book.book_author }}</p>
+            <p class="bookinfo-author"> {{ book.author }}</p>
 
             <div class="bookinfo-rate">
 
                 <!-- Rate -->
-                <p class="bookinfo-star"> Rate It</p>
+                <p class="bookinfo-star">Rate It</p>
                 <div class="rating">
                     <input type="radio" id="star5" name="rating" value="5"/>
                     <label for="star5" title="5星"></label>
@@ -87,7 +80,7 @@
                 </div>
 
                 <!-- Available Dot -->
-                {% if book.book_num > 0 %}
+                {% if book_num > 0 %}
                 <div class="book-status">
                     <div class="dot available"></div>
                     <div class="text">Available</div>
@@ -107,14 +100,11 @@
 
                 <!-- Borrow Now btn & Review -->
                 <div>
-                    <form id="borrow-form" method="POST" action="{% url 'elib:borrow_book' %}">
+                    <form id="borrow-form" method="POST" action="{% url 'elib:borrow_book'%}">
                         {% csrf_token %}
-                        <input type="hidden" name="book_id" value="{{ book.book_id }}">
-                        <button class="borrowbutton" id="borrow-now-btn" data-book-id="{{ book.book_id }}">Borrow Now
-                        </button>
-
+                        <input type="hidden" name="book_id" id="book-id" value="{{ book.bookid }}">
+                        <button class="borrowbutton" id="borrow-now-btn" data-book-id="{{ book.bookid }}">Borrow Now</button>
                     </form>
-
                 </div>
 
                 <div class=" write-review ">
@@ -127,28 +117,19 @@
 
             </div>
         </div>
-
-
     </div>
+
     <div id="container">
 
         <!--bottom introduction -->
         <!--    <div class="bookintro">-->
         <div class="text-container">
-            <p class="text">{{ book.book_description }}</p>
+            <p class="text">{{ book.description }}</p>
             <button class="read-more">Read More</button>
         </div>
 
-
-        <!--    </div>-->
-
         <hr>
 
-        <!--    authordetails reviews..-->
-        <!--    <div class="author-detail">-->
-        <!--        <p class="text-author-details">Author Details</p>-->
-
-        <!--    </div>-->
         <div class="author-info">
             <div class="author-header">
                 <h3>Author Details</h3>
@@ -195,28 +176,28 @@
                         <a href="#" class="comment-toggle">Show More</a>
                     </div>
                 </div>
-
-                <!--                *****************************-->
             </div>
 
         </div>
-
-
     </div>
 
-
-    {% endfor %}
-    {% endif %}
 
     <hr>
     <div class="related"> Related Books</div>
     <div class="related-images">
         <div class="images">
-            <img src="/static/images/luffy.png" alt="Image 1">
-            <img src="/static/images/luffy.png" alt="Image 2">
-            <img src="/static/images/luffy.png" alt="Image 3">
-            <img src="/static/images/luffy.png" alt="Image 4">
-            <img src="/static/images/luffy.png" alt="Image 5">
+                {% for related_book in related_books %}
+                    <a href="{% url 'elib:book_details' related_book.bookid %}">
+                    <img src="{{ related_book.bookpic }}" alt="related book pic 1">
+                    <h4>{{ related_book.title }}</h4>
+                    <p>{{ related_book.author }}</p>
+                    {% if related_book.booknum > 0 %}
+                        <p class="available">Available</p>
+                    {% else %}
+                        <p class="unavailable">Unavailable</p>
+                    {% endif %}
+                    </a>
+                {% endfor %}
         </div>
         <button class="arrow"></button>
 

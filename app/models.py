@@ -5,16 +5,14 @@ from django.template.defaultfilters import slugify
 
 # Create your models here.
 
-
-
 class Book(models.Model):
     bookid = models.IntegerField(primary_key=True, null=False)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
     booknum = models.IntegerField(null=False)  # remain number
     description = models.TextField()
-    bookpic = models.TextField()
-    bookcategory = models.TextField()
+    bookpic = models.TextField(default='undefined')
+    bookcategory = models.TextField(default='undefined')
 
     def __str__(self):
         return self.title
