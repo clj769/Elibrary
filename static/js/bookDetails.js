@@ -5,7 +5,7 @@ $(document).ready(function() {
     var bookId = $('#book-id').val();
     $.ajax({
       type: 'POST',
-      url: '/borrow/',
+      url: '/app/borrow_book/',
       data: {
         'book_id': bookId,
         'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
