@@ -20,7 +20,7 @@
     </header>
 
     <div class="page_top">
-        <label class="copyright">@E-Library</label>
+        <a href="{% url 'elib:index' %}" ><label class="copyright">@E-Library</label></a>
 
         {% if user.is_authenticated %}
             <!--user is login, redirect to the personal page-->
@@ -31,9 +31,11 @@
 
         {% else %}
             <!--user not login, redirect to login page-->
+
             <a href="{% url 'auth_login' %}">
                 <img src="{% static 'images/user.jpg' %}" alt="Picture of User" id="user-icon"/>
             </a>
+            <a href="{% url 'auth_login' %}" id="logout" class="logout">Login</a>
         {% endif %}
 
         <a href="{% url 'elib:contact_us' %}" id="contact-button">Contact Us</a>
