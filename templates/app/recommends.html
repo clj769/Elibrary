@@ -5,23 +5,27 @@
 
 {% block link %}
     {{ block.super }}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/recommends.css' %}">
 {% endblock %}
 {% block content %}
 
-		<div class ="row">
-			<h1>Recommends</h1>
-			{% for item in books%}
-				<div class = "col-xs-6 col-md-3">
-					<div class = "thumbnail">
+
+        <div class="container">
+            <h1>Recommends</h1>
+            {% for item in books %}
+
+                <div class="col-md-4">
+                    <div class="thumbnail">
                         <a href="{% url 'elib:book_details' item.book_id %}">
-						<img src ="{{item.book_pic }}">
-						<h3>{{item.book_title }}</h3>
+                            <img src="{{ item.book_pic }}">
+                            <h3>{{ item.book_title }}</h3>
                         </a>
-						<p>Rent Time:{{item.book_author}}</p>
-						<p>Deadline:{{item.book_num}}</p>
-					</div>
-				</div>
-			{% endfor %}
-	</div>
+                        <p>author:{{ item.book_author }}</p>
+                        <p>book for rent:{{ item.book_num }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+
 {% endblock %}
