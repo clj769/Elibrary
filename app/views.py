@@ -1,16 +1,13 @@
 from datetime import timedelta, datetime
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q, Min
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse
 from app.models import Book, Record
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 
 
-
-#rewrite index page
 def index(request):
     #show 3 new books by largest bookid
     new_books = Book.objects.order_by('-bookid')[:3]
@@ -32,7 +29,7 @@ def borrow_history(request):
     if request.method == 'GET':
         #user_id = request.GET.get('user_id')  # the tag's 'name' in html
         user_id = request.user.id
-        print(user_id)
+        #print(user_id)
         records = Record.objects.filter(user=user_id)
         data = {
             'records': [
@@ -59,7 +56,7 @@ def search(request):
             books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
             #print(books)
         else:
-            print('search no book')
+            #print('search no book')
             books = Book.objects.none()  # empty QuerySet
 
     return render(request, 'app/book_search.html', {'books': books, 'query': query})
@@ -87,14 +84,13 @@ def book_details(request, book_id):
 
 @login_required
 def borrow_book(request):
-
-    print('borrow_book user', request.user)
-    print('user id:', request.user.id)
+    #print('borrow_book user', request.user)
+    #print('user id:', request.user.id)
     if request.method == 'POST':
         book_id = request.POST.get('book_id')
-        print('bookid:',book_id)
+        #print('bookid:',book_id)
         book = Book.objects.get(bookid=book_id)
-        print(book,book.booknum)
+        #print(book,book.booknum)
 
         if book.booknum == 0:
             messages.error(request, "This book is currently out of stock.")
@@ -137,7 +133,7 @@ def personal_page(request):
         'date_joined': request.user.date_joined,
     }
 
-    print(data)
+    #print(data)
     return render(request, 'app/personalPage.html', context=data)
 
 

@@ -9,20 +9,22 @@
 {% endblock %}
 
 {% block content %}
-		<div class ="row">
-                <div class="col-md-3">
-                    <img src ="{% static 'images/luffy.png' %}">
-                </div>
+        <div class="container">
+            <div class ="row">
+                    <div class="col-md-3">
+                        <img src ="{% static 'images/luffy.png' %}">
+                    </div>
 
-                <div class="col-md-3">
-                    <h3>Username: {{username}}</h3>
-                    <h3>ID: {{uid}}</h3>
-                </div>
+                    <div class="col-md-3">
+                        <h3>Username: {{username}}</h3>
+                        <h3>ID: {{uid}}</h3>
+                    </div>
 
-                <div class="col-md-3 col-md-offset-3">
-                    <h3>Date of creation: {{date_joined}}</h3>
-                </div>
+                    <div class="col-md-3 col-md-offset-3">
+                        <h3>Date of creation: {{date_joined}}</h3>
+                    </div>
 
+            </div>
         </div>
 
     <hr />
