@@ -1,30 +1,36 @@
+// $(document).ready(function() {
+//   $('#borrow-form').submit(function(event) {
+//     event.preventDefault();
+//
+//     var bookId = $('#book-id').val();
+//     var url = $('#borrow-form').data('url');
+//
+//
+//     $.ajax({
+//       type: 'POST',
+//       url: url,
+//       data: {
+//         'book_id': bookId,
+//         'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+//       },
+//       success: function(data) {
+//         alert(data.message);
+//         // if (data.success) {
+//         //   alert("Borrowed successfully.");
+//         // } else {
+//         //   alert("This book is currently out of stock.");
+//         // }
+//       },
+//       error: function() {
+//         alert('An error occurred while processing your request.');
+//       }
+//     });
+//   });
+// });
+
+
+
 $(document).ready(function() {
-  $('#borrow-form').submit(function(event) {
-    event.preventDefault();
-
-    var bookId = $('#book-id').val();
-    $.ajax({
-      type: 'POST',
-      url: '/app/borrow_book/',
-      data: {
-        'book_id': bookId,
-        'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
-      },
-      success: function(data) {
-        if (data.success) {
-          alert("Borrowed successfully.");
-        } else {
-          alert("This book is currently out of stock.");
-        }
-      },
-      error: function() {
-        alert('An error occurred while processing your request.');
-      }
-    });
-  });
-});
-
- $(document).ready(function() {
       // Hide the "Read More" button if the text fits within the max-height
 
 
@@ -39,14 +45,14 @@ $(document).ready(function() {
       });
     });
 
-//作者详情下拉
+//author detail
 $(document).ready(function() {
   $('.author-header').click(function() {
     $(this).parent().toggleClass('show');
   });
 });
 
-//评论下拉
+//review
 $(document).ready(function() {
   $('.reviews-header').click(function() {
     $(this).parent().toggleClass('show');

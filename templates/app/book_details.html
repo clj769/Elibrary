@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/book_detail.css' %} ">
     <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
     <script src="{% static 'js/bookDetails.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 {% endblock %}
 
 
@@ -59,6 +64,17 @@
                         <div class="book-status">
                             <div class="dot unavailable"></div>
                             <div class="text">Unavailable</div>
+                        </div>
+                    {% endif %}
+
+                    <!-- Display messages -->
+                    {% if messages %}
+                        <div id="message-box" class="message-box">
+                            {% for message in messages %}
+                                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    <h3>{{ message }}</h3>
+                                </div>
+                            {% endfor %}
                         </div>
                     {% endif %}
 

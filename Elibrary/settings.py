@@ -32,8 +32,11 @@ REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = 'elib:index'
 LOGIN_URL = 'auth_login'
 
-# Application definition
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
+# Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",

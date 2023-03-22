@@ -11,15 +11,15 @@
 
 <div class="cats">
     <div class="container">
-        {% for item in books %}
+        {% for book in books %}
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <a href="{% url 'elib:book_details' item.book_id %}">
-                        <img src="{{ item.book_pic }}">
-                        <h3>{{ item.book_title }}</h3>
+                    <a href="{% url 'elib:book_details' book.bookid %}">
+                        <img src="{{ book.bookpic }}">
+                        <h3>{{ book.title }}</h3>
                     </a>
-                    <p>author:{{ item.book_author }}</p>
-                    <p>book for rent:{{ item.book_num }}</p>
+                    <p>author:{{ book.author }}</p>
+                    <p>book for rent:{{ book.booknum }}</p>
                 </div>
             </div>
         {% endfor %}

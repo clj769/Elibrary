@@ -5,6 +5,9 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from app.models import Book, Record
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+
 
 
 #rewrite index page
@@ -22,18 +25,6 @@ def index(request):
     }
 
     return render(request, 'app/index.html', context=data)
-
-# Create your views here.
-# class IndexView(View):
-#     def get(self, request):
-#         category_list = Category.objects.order_by('-likes')[:4]
-#         page_list = Page.objects.order_by('-views')[:3]
-#
-#         context_dict = {}
-#         context_dict['categories'] = category_list
-#         context_dict['pages'] = page_list
-#
-#         return render(request, 'app/index.html', context=context_dict)
 
 
 @login_required
@@ -79,46 +70,6 @@ def contact_us(request):
     return render(request, 'app/contactus.html')
 
 
-# class ShowCategoryView(View):
-#     def create_context_dict(self, category_name_slug):
-#         """
-#         A helper method that was created to demonstarte the power of class-based views.
-#         You can reuse this method in the get() and post() methods!
-#         """
-#         context_dict = {}
-#
-#         try:
-#             category = Category.objects.get(slug=category_name_slug)
-#             pages = Page.objects.filter(category=category).order_by('-views')
-#
-#             context_dict['pages'] = pages
-#             context_dict['category'] = category
-#         except Category.DoesNotExist:
-#             context_dict['pages'] = None
-#             context_dict['category'] = None
-#
-#         return context_dict
-#
-#     def get(self, request, category_name_slug):
-#         context_dict = self.create_context_dict(category_name_slug)
-#         return render(request, 'app/category.html', context_dict)
-#
-#
-# class GotoView(View):
-#     def get(self, request):
-#         page_id = request.GET.get('page_id')
-#
-#         try:
-#             selected_page = Page.objects.get(id=page_id)
-#         except Page.DoesNotExist:
-#             return redirect(reverse('elib:index'))
-#
-#         selected_page.views = selected_page.views + 1
-#         selected_page.save()
-#
-#         return redirect(selected_page.url)
-
-
 def book_details(request, book_id):
 
     book =Book.objects.get(bookid=book_id)
@@ -136,28 +87,32 @@ def book_details(request, book_id):
 
 @login_required
 def borrow_book(request):
-    print('borrow_book')
+
+    print('borrow_book user', request.user)
+    print('user id:', request.user.id)
     if request.method == 'POST':
         book_id = request.POST.get('book_id')
-        print(book_id)
+        print('bookid:',book_id)
         book = Book.objects.get(bookid=book_id)
-        print(book)
+        print(book,book.booknum)
 
         if book.booknum == 0:
-            message = "This book is currently out of stock."
-            return JsonResponse({'success': False, 'message': message})
+            messages.error(request, "This book is currently out of stock.")
+            return HttpResponseRedirect(reverse('elib:book_details', args=[book_id]))
+
         else:
+            # Add borrow_record
+            rent_deadline = datetime.now() + timedelta(days=30)
+            record = Record(user_id=request.user.id, book_id=book.bookid, rent_deadline=rent_deadline)
+            record.save()
+
+            # Only reduce the booknum and save the book after the record is saved
             book.booknum -= 1
             book.save()
 
-            #add borrow_record
-            rent_deadline = datetime.now() + timedelta(days=30)
-            record = Record(user=request.user, book=book, rent_deadline=rent_deadline, rent_sts=False)
-            record.save()
+            messages.success(request, "Book borrowed successfully!")
+            return HttpResponseRedirect(reverse('elib:book_details', args=[book_id]))
 
-            message = "Book borrowed successfully!"
-            return JsonResponse({'success': True, 'message': message})
-    return JsonResponse({'success': False, 'message': 'Invalid request.'})
 
 
 @login_required
@@ -191,19 +146,6 @@ def recommends(request):
         category = request.GET.get('category')
         if category:
             books = Book.objects.filter(bookcategory=category)
-            data = {
-                'books': [
-                    {
-                        'book_pic': book.bookpic,
-                        'book_id': book.bookid,
-                        'book_title': book.title,
-                        'book_author': book.author,
-                        'book_num': book.booknum,
-                        'book_description': book.description,
-                    } for book in books
-                ]
-            }
-        else:
-            data = {'books': []}
+            data = {'books': books}
 
         return render(request, 'app/recommends.html', context=data)
