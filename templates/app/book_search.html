@@ -1,39 +1,40 @@
 {% extends 'app/base.html' %}
+{% load static %}
 
 {% block title %}Search Results{% endblock %}
+{% block link %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/recommends.css' %}">
+{% endblock %}
 
 {% block content %}
-
+    <h2>Search Results for "{{ query }}"</h2>
         {% if books %}
-            <div class="search-results">
-                <h2>Search Results for "{{ query }}"</h2>
-                <hr>
-
+            <div class="cat">
+                <div class="container">
                 {% for book in books %}
-                    <div class="book-info">
-                        <a href="{% url 'elib:book_details' book.bookid %}">
-                        <div class="book-img">
-                            <img src="{{ book.bookpic}}" alt="{{ book.title }}">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a href="{% url 'elib:book_details' book.bookid %}">
+                                <img src="{{ book.bookpic}}" alt="{{ book.title }}">
+                                <h3>{{ book.title }}</h3>
+                            </a>
+                                <h3>{{ book.author }}</h3>
+
+                            {% if book.booknum > 0 %}
+                                <p class="available">Available</p>
+                            {% else %}
+                                <p class="unavailable">Unavailable</p>
+                            {% endif %}
                         </div>
-                    <div class="book-details">
-                        <h3>{{ book.title }}</h3>
-                        <p>{{ book.author }}</p>
-                    {% if book.booknum > 0 %}
-                        <p class="available">Available</p>
-                    {% else %}
-                        <p class="unavailable">Unavailable</p>
-                    {% endif %}
                     </div>
-                    </a>
-                    </div><hr>
                 {% endfor %}
+                </div>
             </div>
 
         {% else %}
             {% if query %}
-            <div class="search-results">
                 <h2>No results found for "{{ query }}".</h2>
-            </div>
             {% endif %}
     {% endif %}
 

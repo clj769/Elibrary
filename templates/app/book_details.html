@@ -62,11 +62,6 @@
                         </div>
                     {% endif %}
 
-                    <!-- heart -->
-                    <div class="heart">
-                        <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
-                    </div>
-
                     <!-- Borrow Now btn & Review -->
                     <div>
                         <form id="borrow-form" method="POST" action="{% url 'elib:borrow_book' %}">
@@ -78,12 +73,12 @@
                         </form>
                     </div>
 
-                    <div class=" write-review ">
-                        <a href=" " class="review-link" href="url">
-                            <i class="fa fa-comment-o fa-3x"></i>
-                            Write a Review
-                        </a>
-                    </div>
+{#                    <div class=" write-review ">#}
+{#                        <a href=" " class="review-link" href="url">#}
+{#                            <i class="fa fa-comment-o fa-3x"></i>#}
+{#                            Write a Review#}
+{#                        </a>#}
+{#                    </div>#}
 
 
                 </div>
@@ -171,9 +166,9 @@
                                     <h4>{{ related_book.title }}</h4>
                                     <p>{{ related_book.author }}</p>
                                     {% if related_book.booknum > 0 %}
-                                        <p class="available">Available</p>
+                                        <p class="text">Available</p>
                                     {% else %}
-                                        <p class="unavailable">Unavailable</p>
+                                        <p class="text">Unavailable</p>
                                     {% endif %}
                                 </a>
 
