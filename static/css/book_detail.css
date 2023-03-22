@@ -7,7 +7,7 @@ body {
 	height: 169px;
 }
 .main {
-  /*max-width: 1066px;*/
+  max-width: 1170px;
   margin: 0 auto;
 }
 .container3 {
@@ -22,125 +22,6 @@ body {
 
 }
 
-.rectangle-top {
-	/*width: 1366px;*/
-	height: 38px;
-	padding: 8px 8px 8px 8px;
-	background: #444444;
-	color: #ffffff;
-	font-family: "Source Sans 3";
-	font-weight: 400;
-	font-size: 15px;
-	line-height: 1.3;
-	text-align: center;
-
-}
-
-.paragraph-1-copy-8 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #444444;
-    font-family: "Source Sans 3";
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 1.28;
-    margin-top: 20px;
-    margin-left: 44px;
-}
-.at-sign-icon-1 {
-	width: 32px;
-	height: 32px;
-	background: #444444;
-}
-
-.top-right{
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    margin-top: 18px;
-    margin-right: 40px;
-
-}
-
-.right-icon{
-    width: 30px;
-	height: 23px;
-	color: #444444;
-	margin-left: 9px;
-}
-.login-register{
-	height: 23px;
-	font-family: "Source Sans 3";
-	font-weight: 600;
-	font-size: 16px;
-	margin-left: 9px;
-	color: #444444;
-	text-decoration: none;
-}
-
-.button-contact-style{
-    display: flex;
-    justify-content: right;
-
-    margin-top: 15px;
-    margin-right: 40px;
-}
-.button-contact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-	width: 138px;
-	height: 35px;
-	padding: 0px 10px 0px 10px;
-	background: #444444;
-	color: #ffffff;
-	border-color: #444444;
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 4px 4px 4px 4px;
-	font-family: "Source Sans 3";
-	font-weight: bold;
-	font-size: 14px;
-
-}
-.link-bar1-style{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    margin-top: 18px;
-    margin-left: 110px;
-}
-.link-bar-1 {
-	color: #444444;
-	font-family: "Source Sans 3";
-	font-weight: 600;
-	font-size: 16px;
-	text-align: center;
-    margin-top: 15px;
-    margin-right: 15px;
-    text-decoration: none;
-
-}
-.link-bar2-style{
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    margin-top: 18px;
-
-}
-.link-bar-2 {
-	width: 500px;
-	height: 22px;
-	color: #444444;
-	font-family: "Source Sans 3";
-	font-weight: 600;
-	font-size: 16px;
-	line-height: 1.3;
-	text-align: left;
-	margin-left: 70px;
-
-}
 .container-bookinfo {
     width: 700px;
 	height: 500px;
@@ -161,7 +42,7 @@ body {
 	height: 483px;
 	background: #f6f6f6;
 	border-radius: 2px 2px 2px 2px;
-	margin-left: 70px;
+
 
 }
 
@@ -184,8 +65,8 @@ body {
 	font-weight: 700;
 	font-size: 30px;
 	text-align: left;
-	 word-wrap: break-word; /* 允许单词断行 */
-  overflow-wrap: break-word; /* 允许单词断行 */
+	 word-wrap: break-word;
+  overflow-wrap: break-word;
 
   }
 
@@ -359,7 +240,7 @@ padding: 4px 8px 4px 8px;
       font-size: 24px;
       line-height: 2;
       text-align: left;
-        max-height: 170px;
+        max-height: 120px;
       white-space: pre-line;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -509,20 +390,12 @@ padding: 4px 8px 4px 8px;
   margin-left: 30px;
 }
 
-.related-images .arrow {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  background-image: url('https://cdn.jsdelivr.net/gh/google/material-design-icons/navigation/1x_web/ic_chevron_right_black_24dp.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 20px 20px;
-  border: none;
-  outline: none;
-  cursor: pointer;
+
+.book-title-author-text{
+  width: 250px;
+  margin: 30px auto 0;
+
+
 }
 
 .new .thumbnail {
@@ -547,3 +420,4 @@ padding: 4px 8px 4px 8px;
 
 
 
+/**/

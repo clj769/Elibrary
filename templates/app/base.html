@@ -11,6 +11,7 @@
 	{% block link %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
+         <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- other links-->
 	{% endblock %}
 </head>
@@ -43,17 +44,18 @@
         <form id="search-form" action="{% url 'elib:search' %}" method="post" autocomplete="off">
             {% csrf_token %}
             <input type="text" id="search" name="search" placeholder="Search book...">
-            <button type="submit" id="search-button">Search</button>
+            <button type="submit" id="search-button"><i class="fa fa-search fa-2x " aria-hidden="true"></i></button>
         </form>
     </div>
 
-    <div class="recommends">
-        <ul class = "nav nav-tabs">
+    <div class="recommends ">
+        <ul class = "nav nav-tabs menu">
             <li><a href="{% url 'elib:recommends' %}?category=literature">Literature</a></li>
             <li><a href="{% url 'elib:recommends' %}?category=fiction">Fiction</a></li>
             <li><a href="{% url 'elib:recommends' %}?category=history">History</a></li>
             <li><a href="{% url 'elib:recommends' %}?category=business">Business</a></li>
             <li><a href="{% url 'elib:recommends' %}?category=comics">Comics</a></li>
+            <li><a href="{% url 'elib:recommends' %}?category=science">Science</a></li>
             <li><a href="{% url 'elib:recommends' %}?category=social">Social</a></li>
         </ul>
     </div>

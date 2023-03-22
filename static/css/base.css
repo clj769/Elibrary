@@ -16,17 +16,29 @@ header {
 
 .copyright{
     width: 171px;
-    height: 34px;
+    height: 32px;
     color: #444444;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 30px;
     line-height: 1.28;
     float: left;
+
+     display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Source Sans 3";
+
+
+    line-height: 1.28;
+    margin-top: 5px;
+    margin-left: 44px;
 }
 
 div{
     margin-bottom: 10px;
     margin-top: 20px;
+
 }
 
 .page_top{
@@ -37,40 +49,51 @@ div{
 /*search input bar*/
 #search {
     width: 500px;
-    height: 40px;
-    background: url("/static/images/search.jpg") no-repeat;
-    text-indent: 40px;
+    height: 42px;
     color: #c0c0c0;
     border-color: #c0c0c0;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-radius: 21px 21px 21px 21px;
+    font-family: "Source Sans 3";
     font-weight: 400;
     font-size: 16px;
+    text-align: left;
+    margin-top: 5px;
+    margin-left: 125px;
+    padding-left: 30px;
+
 }
 
 /*search button and query button*/
 button[type="submit"] {
-    padding: 5px 10px;
+    padding: 5px 7px ;
     border-radius: 5px;
+    background: transparent;
     border: none;
-    background-color: #008cba;
-    color: #fff;
     font-size: 16px;
     cursor: pointer;
+
 }
+
+
 
 /*contact us button*/
 #contact-button {
     background-color: #444;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 3px 10px 0px 10px;
     border-radius: 5px;
     font-size: 16px;
     text-decoration: none;
     margin-left: auto;
     float: right;
+   display: flex;
+    justify-content: center;
+    align-items: center;
+	width: 130px;
+	height: 40px;
 }
 
 #user-icon {
@@ -91,4 +114,14 @@ button[type="submit"] {
     float: right;
     display: block;
     margin-top: 10px;
+}
+
+
+.menu{
+font-size: 18px;
+font-family: "Source Sans 3";
+font-weight: 600;
+ margin-left: 20px;
+
+
 }
