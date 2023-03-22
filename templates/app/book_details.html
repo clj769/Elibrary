@@ -6,7 +6,6 @@
 {% block link %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/book_detail.css' %} ">
-
     <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
     <script src="{% static 'js/bookDetails.js' %}"></script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -51,7 +50,7 @@
                     </div>
 
                     <!-- Available Dot -->
-                    {% if book.book_num > 0 %}
+                    {% if book.booknum > 0 %}
                         <div class="book-status">
                             <div class="dot available"></div>
                             <div class="text">Available</div>
@@ -158,8 +157,6 @@
 
             </div>
         </div>
-
-
         <hr>
 
         <h3> Related Books</h3>

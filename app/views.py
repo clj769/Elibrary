@@ -139,7 +139,10 @@ def borrow_book(request):
     print('borrow_book')
     if request.method == 'POST':
         book_id = request.POST.get('book_id')
+        print(book_id)
         book = Book.objects.get(bookid=book_id)
+        print(book)
+
         if book.booknum == 0:
             message = "This book is currently out of stock."
             return JsonResponse({'success': False, 'message': message})
